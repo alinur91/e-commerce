@@ -3,3 +3,8 @@ export { default as ecommerce2 } from "./images/ecommerce2.jpg";
 export { default as ecommerce3 } from "./images/ecommerce3.jpg";
 export { default as ecommerce4 } from "./images/ecommerce4.jpg";
 export { default as logo } from "./images/logo.png";
+export { default as avatar } from "./images/avatar.jpg";
+export { default as noProducts } from "./images/no-products.jpg";
+export { default as noProduct } from "./images/no-product.png";
+export { default as productsNotFound } from "./images/productsNotFound.jpg";
+export { default as market } from "./images/market.webp";

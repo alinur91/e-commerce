@@ -8,3 +8,8 @@ export enum AuthenticationPages {
   Signup = 'SIGNUP',
   Reset_Password = 'RESET_PASSWORD',
 }
+
+export enum StarRatingSize {
+  "large" = "LARGE",
+  "small" = "SMALL",
+}

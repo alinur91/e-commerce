@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserData } from "@features/auth/lib/types";
-import { signup } from "@features/auth/api/signup.api";
-import { signin } from "@features/auth/api/signin.api";
+import { signup, signin, signout } from "@features/auth/api/index";
+import { toast } from "react-toastify";
+
+// Get the user data from localStorage
+const initialUserData = localStorage.getItem("loggedInUser");
 
 // Create a single slice for authentication
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    loggedInUser: null as UserData | null,
+    loggedInUser: initialUserData ? JSON.parse(initialUserData) : null, // Parse the JSON string from localStorage,
     loading: false,
     error: null as string | null,
   },
@@ -25,6 +27,7 @@ const authSlice = createSlice({
     builder.addCase(signup.fulfilled, (state, action) => {
       state.loading = false;
       state.loggedInUser = action.payload;
+      localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
     });
     builder.addCase(signup.rejected, (state, action) => {
       state.loading = false;
@@ -38,8 +41,28 @@ const authSlice = createSlice({
     builder.addCase(signin.fulfilled, (state, action) => {
       state.loading = false;
       state.loggedInUser = action.payload;
+      localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
     });
     builder.addCase(signin.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message as string;
+    });
+    // Handle signout action
+    builder.addCase(signout.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(signout.fulfilled, (state) => {
+      state.loading = false;
+      state.loggedInUser = null;
+      localStorage.removeItem("loggedInUser");
+      localStorage.removeItem("loggedInToastShown");
+      toast.success("Successfully signed out", {
+        position: "bottom-right",
+        toastId: "signoutSuccess",
+      });
+    });
+    builder.addCase(signout.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message as string;
     });

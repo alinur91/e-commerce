@@ -2,22 +2,14 @@ import { Outlet } from "react-router-dom";
 import { Footer, Header } from "@ui/index";
 
 const AuthenticatedLayout = () => {
-  const isLoading = false;
-
-  if (isLoading) {
-    return "Loading...";
-  }
-
   return (
-    <div className="grid h-screen grid-rows-[auto_1fr_auto]">
-      <Header />
-
-      <div className="overflow-scroll">
-        <main className="mx-auto max-w-3xl">
+    <div className="flex min-h-dvh flex-col items-center">
+      <div className="container mx-auto flex-1 border-l-gray-100 border-r-gray-100 shadow-xl lg:border-l-2 lg:border-r-2">
+        <Header />
+        <main className="w-full">
           <Outlet />
         </main>
       </div>
-
       <Footer />
     </div>
   );

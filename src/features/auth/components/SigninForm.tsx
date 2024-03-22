@@ -66,7 +66,7 @@ const SigninForm = () => {
         />
         <Button
           disabled={isSubmitting}
-          className="mt-6 gap-3"
+          className="mt-6 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
           type={ButtonEnum.Primary}
         >
           {loading ? "Signing in..." : "SIGN IN"}{" "}

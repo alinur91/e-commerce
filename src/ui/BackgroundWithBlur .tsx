@@ -10,10 +10,10 @@ const BackgroundWithBlur = ({
   children,
 }: BackgroundWithBlurProps) => {
   return (
-    <div className="relative min-h-dvh flex justify-center items-center">
+    <div className="relative flex min-h-dvh items-center justify-center">
       {/* Background image */}
       <div
-        className="sm:absolute sm:inset-0 sm:bg-cover sm:bg-center "
+        className="sm:absolute sm:inset-0 sm:bg-cover sm:bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
 

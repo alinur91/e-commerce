@@ -8,7 +8,7 @@ import { store } from "@services/store/store.ts";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+    <App />
     </React.StrictMode>
   </Provider>,
 );

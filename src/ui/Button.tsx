@@ -7,7 +7,7 @@ type ButtonProps = {
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
-  type: ButtonEnum;
+  type?: ButtonEnum;
   to?: string;
 };
 
@@ -23,13 +23,13 @@ function Button({
     "flex justify-center items-center font-semibold rounded-md tracking-wide";
 
   const styles = {
-    [ButtonEnum.Primary]: `${base} bg-green-500 text-white h-10 bg-gradient transition duration-300 hover:from-green-500 hover:to-green-800 hover:bg-gradient-to-t border-green-800 border-2 w-full`,
+    [ButtonEnum.Primary]: `${base} bg-green-500 text-white h-10 bg-gradient transition duration-300 border-green-800 border-2 w-full`,
     [ButtonEnum.Secondary]: `${base} bg-white text-orange-200 h-10`,
   };
 
   if (to)
     return (
-      <Link to={to} className={`${styles[type]} ${className}`}>
+      <Link to={to} className={`${type ? styles[type] : ""} ${className}`}>
         {children}
       </Link>
     );
@@ -38,7 +38,7 @@ function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${styles[type]} ${className}`}
+      className={`${styles[type as ButtonEnum]} ${className}`}
     >
       {children}
     </button>

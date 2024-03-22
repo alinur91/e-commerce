@@ -1,5 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Home, Signin, Signup, ResetPassword } from "./pages";
+import {
+  Home,
+  Signin,
+  Signup,
+  ResetPassword,
+  ProductPage,
+  SearchPage,
+} from "./pages";
 import { AuthenticatedLayout, ProtectedRoute } from "./ui";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductPage />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
     ],
   },
