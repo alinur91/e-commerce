@@ -1,4 +1,4 @@
-import { StarRatingSize } from "@ts-types/enums";
+import { StarRatingSizeEnum } from "@ts-types/enums";
 import { IoIosStar } from "@utils/icons";
 
 type StarProps = {
@@ -6,12 +6,13 @@ type StarProps = {
   onHoverIn: () => void;
   onHoverOut: () => void;
   color?: string;
-  size: StarRatingSize;
+  size: StarRatingSizeEnum;
 };
 
 const Star = ({ onRate, onHoverIn, onHoverOut, size }: StarProps) => {
-  const largeClass = size === StarRatingSize.large ? "text-xl md:text-2xl" : "";
-  const smallClass = size === StarRatingSize.small ? "text-md" : "";
+  const largeClass =
+    size === StarRatingSizeEnum.large ? "text-xl md:text-2xl" : "";
+  const smallClass = size === StarRatingSizeEnum.small ? "text-md" : "";
 
   return (
     <span

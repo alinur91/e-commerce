@@ -1,33 +1,33 @@
-import { AuthenticationPages } from "@ts-types/enums";
+import { AuthenticationPagesEnum } from "@ts-types/enums";
 import { Link } from "react-router-dom";
 
 type AuthenticationNavigationProps = {
-  page: AuthenticationPages;
+  page: AuthenticationPagesEnum;
 };
 
 const AuthenticationNavigation = ({ page }: AuthenticationNavigationProps) => {
   return (
     <>
-      {page === AuthenticationPages.Login && (
+      {page === AuthenticationPagesEnum.Login && (
         <>
           <p className="text-gray-400">
             Don't have an account?{" "}
-            <Link className="text-blue-500 font-bold" to="/signup">
+            <Link className="font-bold text-blue-500" to="/signup">
               Sign up
             </Link>{" "}
           </p>{" "}
-          <Link className="hover:underline cursor-default" to="/reset-password">
+          <Link className="cursor-default hover:underline" to="/reset-password">
             <p className="text-gray-400">Forgot Your Password?</p>
           </Link>
         </>
       )}
 
-      {(page === AuthenticationPages.Signup ||
-        page === AuthenticationPages.Reset_Password) && (
+      {(page === AuthenticationPagesEnum.Signup ||
+        page === AuthenticationPagesEnum.Reset_Password) && (
         <>
           <p className="text-gray-400">
             Already have an account?{" "}
-            <Link className="text-blue-500 font-bold" to="/signin">
+            <Link className="font-bold text-blue-500" to="/signin">
               Sign in
             </Link>{" "}
           </p>{" "}

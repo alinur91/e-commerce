@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { signup, signin, signout } from "@features/auth/api/index";
 import { toast } from "react-toastify";
+import { removeLocalStorageItem, setLocalStorageItem } from "@utils/helpers";
+import { LocalStorageKeyEnum, ToastNotificationsEnum } from "@ts-types/enums";
 
 // Get the user data from localStorage
 const initialUserData = localStorage.getItem("loggedInUser");
@@ -27,7 +29,7 @@ const authSlice = createSlice({
     builder.addCase(signup.fulfilled, (state, action) => {
       state.loading = false;
       state.loggedInUser = action.payload;
-      localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
+      setLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER, action.payload);
     });
     builder.addCase(signup.rejected, (state, action) => {
       state.loading = false;
@@ -41,7 +43,7 @@ const authSlice = createSlice({
     builder.addCase(signin.fulfilled, (state, action) => {
       state.loading = false;
       state.loggedInUser = action.payload;
-      localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
+      setLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER, action.payload);
     });
     builder.addCase(signin.rejected, (state, action) => {
       state.loading = false;
@@ -55,9 +57,9 @@ const authSlice = createSlice({
     builder.addCase(signout.fulfilled, (state) => {
       state.loading = false;
       state.loggedInUser = null;
-      localStorage.removeItem("loggedInUser");
-      localStorage.removeItem("loggedInToastShown");
-      toast.success("Successfully signed out", {
+      removeLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER);
+      removeLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_TOAST_SHOWN);
+      toast.success(ToastNotificationsEnum.SUCCESS_SIGN_OUT, {
         position: "bottom-right",
         toastId: "signoutSuccess",
       });

@@ -7,6 +7,7 @@ export { default as Button } from "./Button";
 export { default as Avatar } from "./Avatar";
 export { default as Input } from "./Input";
 export { default as ErrorMessage } from "./ErrorMessage";
+export { default as NoResultsMessage } from "./NoResultsMessage";
 export { default as ImageBanner } from "./ImageBanner";
 export { default as ImageWithOverlay } from "./ImageWithOverlay ";
 export { default as AuthenticationNavigation } from "./AuthenticationNavigation";

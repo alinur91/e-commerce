@@ -1,11 +1,11 @@
-import { StarRatingSize } from "@ts-types/enums";
+import { StarRatingSizeEnum } from "@ts-types/enums";
 import { Star } from "@ui/index";
 import { useState } from "react";
 
 type StarRatingProps = {
   maxRating: number;
   color?: string;
-  size: StarRatingSize;
+  size: StarRatingSizeEnum;
   messages?: [];
   defaultRating?: number;
   onSetRating?: (n: number) => void;
@@ -14,7 +14,7 @@ type StarRatingProps = {
 export default function StarRating({
   maxRating = 5,
   color = "#fcc419",
-  size = StarRatingSize.small,
+  size = StarRatingSizeEnum.small,
   messages = [],
   defaultRating = 0,
   onSetRating,
@@ -27,9 +27,10 @@ export default function StarRating({
     onSetRating(rating);
   }
 
-  const largeClass = size === StarRatingSize.large ? "text-md md:text-lg" : "";
-  const smallClass = size === StarRatingSize.small ? "text-sm" : "";
-  const isLarge = size === StarRatingSize.large;
+  const largeClass =
+    size === StarRatingSizeEnum.large ? "text-md md:text-lg" : "";
+  const smallClass = size === StarRatingSizeEnum.small ? "text-sm" : "";
+  const isLarge = size === StarRatingSizeEnum.large;
 
   return (
     <div className="flex items-center gap-2">

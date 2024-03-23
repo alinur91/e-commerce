@@ -1,5 +1,5 @@
 import { logo } from "@data/index";
-import { AuthenticationPages, ButtonEnum } from "@ts-types/enums";
+import { AuthenticationPagesEnum, ButtonEnum } from "@ts-types/enums";
 import { AuthenticationNavigation, Button, Input } from "@ui/index";
 import { useForm } from "react-hook-form";
 import { signup } from "@features/auth/api/signup.api";
@@ -90,7 +90,7 @@ const LoginForm = () => {
           {loading && <ClipLoader color="#be7c18" size={24} />}
         </Button>
       </form>
-      <AuthenticationNavigation page={AuthenticationPages.Signup} />
+      <AuthenticationNavigation page={AuthenticationPagesEnum.Signup} />
     </div>
   );
 };

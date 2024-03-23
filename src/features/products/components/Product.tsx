@@ -1,6 +1,6 @@
 import { Button, StarRating } from "@ui/index";
 import { ProductData } from "../lib/types";
-import { ButtonEnum, StarRatingSize } from "@ts-types/enums";
+import { ButtonEnum, StarRatingSizeEnum } from "@ts-types/enums";
 import { Link } from "react-router-dom";
 
 type ProductProps = {
@@ -17,7 +17,7 @@ const Product = ({ product }: ProductProps) => {
       <h4 className="text-xs font-semibold">{product.title}</h4>
       <StarRating
         maxRating={5}
-        size={StarRatingSize.small}
+        size={StarRatingSizeEnum.small}
         defaultRating={product.rating}
       />
       <p className="text-2xl font-bold">${product.price}</p>

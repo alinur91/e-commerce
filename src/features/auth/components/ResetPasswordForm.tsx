@@ -1,5 +1,5 @@
 import { logo } from "@data/index";
-import { AuthenticationPages, ButtonEnum } from "@ts-types/enums";
+import { AuthenticationPagesEnum, ButtonEnum } from "@ts-types/enums";
 import { AuthenticationNavigation, Button, Input } from "@ui/index";
 
 const ResetPasswordForm = () => {
@@ -19,7 +19,7 @@ const ResetPasswordForm = () => {
           VERIFY NOW
         </Button>
       </form>
-      <AuthenticationNavigation page={AuthenticationPages.Reset_Password} />
+      <AuthenticationNavigation page={AuthenticationPagesEnum.Reset_Password} />
     </div>
   );
 };

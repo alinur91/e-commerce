@@ -1,19 +1,12 @@
-import { useAppDispatch, useAppSelector } from "@hooks/index";
-import { useEffect } from "react";
+import { useAppSelector } from "@hooks/index";
 import { selectProductsData } from "@features/products/slices/selector";
-import { getProducts } from "@features/products/api/getProducts.api";
 import { MoonLoader } from "react-spinners";
 import { ErrorMessage } from "@ui/index";
 import { ProductsList } from "@features/products/components/index";
-import { ProductsData } from "../lib/types";
+import { ProductsData } from "@features/products/lib/types";
 
 const Products = () => {
-  const dispatch = useAppDispatch();
   const { error, productsList, loading } = useAppSelector(selectProductsData);
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
 
   return (
     <div className="px-6 py-4 md:px-24 md:py-10">

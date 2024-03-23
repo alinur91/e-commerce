@@ -2,7 +2,7 @@ import { FilterByCategories, Price } from "@features/filters/components/index";
 // import { useState } from "react";
 import { FilterPriceByAscDesc } from "@features/filters/components/index";
 import StarRating from "@ui/StarRating";
-import { StarRatingSize } from "@ts-types/enums";
+import { StarRatingSizeEnum } from "@ts-types/enums";
 
 const Filters = () => {
   // const [userRating, setUserRating] = useState("");
@@ -14,7 +14,7 @@ const Filters = () => {
         <FilterByCategories />
         <div className="flex flex-col gap-3">
           <h3 className="text-lg font-semibold text-gray-400">Rating</h3>
-          <StarRating maxRating={5} size={StarRatingSize.large} />
+          <StarRating maxRating={5} size={StarRatingSizeEnum.large} />
         </div>
 
         <Price />

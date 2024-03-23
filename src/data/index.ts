@@ -6,5 +6,7 @@ export { default as logo } from "./images/logo.png";
 export { default as avatar } from "./images/avatar.jpg";
 export { default as noProducts } from "./images/no-products.jpg";
 export { default as noProduct } from "./images/no-product.png";
+export { default as noData } from "./images/noData.png";
+export { default as search } from "./images/search.png";
 export { default as productsNotFound } from "./images/productsNotFound.jpg";
 export { default as market } from "./images/market.webp";
