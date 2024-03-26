@@ -1,9 +1,8 @@
-import { noData } from "@data/index";
+import { noData, productsNotFound } from "@data/index";
 import { ProductsData } from "@features/products/lib/types";
 import { Product } from "@features/products/components/index";
-import { productsNotFound } from "@data/index";
-import { PagesEnum, NoResultsMessagesEnum } from "@ts-types/enums";
-import { NoResultsMessage } from "@ui/index";
+import { PagesEnum, NoSearchResultsMessagesEnum } from "@ts-types/enums";
+import { NoSearchResultsMessage } from "@ui/index";
 
 type ProductsListProps = {
   productsList: ProductsData;
@@ -20,13 +19,13 @@ const ProductsList = ({
         <Product key={product.id} product={product} />
       ));
     } else {
-      return page === PagesEnum.home ? (
-        <img src={productsNotFound} alt="" />
-      ) : (
-        <NoResultsMessage
+      return page === PagesEnum.search ? (
+        <NoSearchResultsMessage
           imageUrl={noData}
-          message={NoResultsMessagesEnum.NoMatch}
+          message={NoSearchResultsMessagesEnum.NoMatch}
         />
+      ) : (
+        <img src={productsNotFound} alt="" />
       );
     }
   };

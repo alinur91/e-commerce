@@ -6,6 +6,7 @@ import {
   ResetPassword,
   ProductPage,
   SearchPage,
+  ProfilePage,
 } from "./pages";
 import { AuthenticatedLayout, ProtectedRoute } from "./ui";
 import { ToastContainer } from "react-toastify";
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
     ],
   },

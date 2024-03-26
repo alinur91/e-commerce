@@ -5,7 +5,7 @@ import { ErrorMessage } from "@ui/index";
 import { ProductsList } from "@features/products/components/index";
 import { ProductsData } from "@features/products/lib/types";
 
-const Products = () => {
+const ProductsContainer = () => {
   const { error, productsList, loading } = useAppSelector(selectProductsData);
 
   return (
@@ -31,4 +31,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsContainer;

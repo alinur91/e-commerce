@@ -13,11 +13,17 @@ export const signup = createAsyncThunk<UserData, Credentials>(
         password,
       );
       await updateProfile(userCredential.user, { displayName: name });
-      const { displayName, email: userEmail, photoURL } = userCredential.user;
+      const {
+        displayName,
+        email: userEmail,
+        photoURL,
+        uid,
+      } = userCredential.user;
       return {
         name: displayName,
         email: userEmail,
         photoURL,
+        uid,
       };
     } catch (error) {
       throw new Error(error as string);

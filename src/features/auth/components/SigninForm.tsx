@@ -5,11 +5,10 @@ import { signin } from "@features/auth/api/signin.api";
 import { useForm } from "react-hook-form";
 import { TSignInSchema, signInSchema } from "@features/auth/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "react-toastify";
 import { useEffect } from "react";
-import { useAppDispatch, useActions, useAppSelector } from "@hooks/index";
+import { useAppDispatch, useAppSelector } from "@hooks/index";
 import { selectAuthData } from "@features/auth/slices/selector";
-import { ClipLoader } from "react-spinners";
+import { ClipLoader } from "@utils/icons";
 import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
@@ -22,16 +21,7 @@ const SigninForm = () => {
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { error, loading, loggedInUser } = useAppSelector(selectAuthData);
-  const { setErrorToNull } = useActions();
-
-  useEffect(() => {
-    if (error) toast.error(error, { position: "bottom-right" });
-
-    return () => {
-      setErrorToNull();
-    };
-  }, [error, setErrorToNull]);
+  const { loading, loggedInUser } = useAppSelector(selectAuthData);
 
   useEffect(() => {
     if (loggedInUser) navigate("/");
@@ -51,25 +41,30 @@ const SigninForm = () => {
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
+          inputClassName="h-11"
           id="email"
           label="Email Address"
           type="email"
+          placeholder="Enter Email Address"
           errors={errors.email && errors.email.message}
+          autoFocus
           {...register("email")}
         />
         <Input
+          inputClassName="h-11"
           id="password"
           label="Password"
           type="password"
+          placeholder="Enter Password"
           errors={errors.password && errors.password.message}
           {...register("password")}
         />
         <Button
-          disabled={isSubmitting}
-          className="mt-6 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
-          type={ButtonEnum.Primary}
+          disabled={isSubmitting || loading}
+          className="mt-6 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800 h-11"
+          type={ButtonEnum.PRIMARY}
         >
-          {loading ? "Signing in..." : "SIGN IN"}{" "}
+          {loading ? "Signing in..." : "Sign in"}{" "}
           {loading && <ClipLoader color="#be7c18" size={24} />}
         </Button>
       </form>

@@ -1,6 +1,9 @@
 export enum ButtonEnum {
-  Primary = "PRIMARY",
-  Secondary = "SECONDARY",
+  PRIMARY = "PRIMARY",
+  SECONDARY = "SECONDARY",
+  LIGHT = "LIGHT",
+  WARNING = "WARNING",
+  DANGER = "DANGER",
 }
 
 export enum AuthenticationPagesEnum {
@@ -14,7 +17,7 @@ export enum StarRatingSizeEnum {
   "small" = "SMALL",
 }
 
-export enum NoResultsMessagesEnum {
+export enum NoSearchResultsMessagesEnum {
   NoMatch = "We're sorry. We were not able to find a match 😒",
   HelloMessage = "Hello, what are you feeling to shop today... 😉",
 }
@@ -25,11 +28,13 @@ export enum PagesEnum {
 }
 
 export enum LocalStorageKeyEnum {
-  LOGGED_IN_TOAST_SHOWN = "loggedInToastShown",
   LOGGED_IN_USER = "loggedInUser",
 }
 
 export enum ToastNotificationsEnum {
   SUCCESS_SIGN_IN = "Successfully signed in",
   SUCCESS_SIGN_OUT = "Successfully signed out",
+  SUCCESS_UPDATE_PASSWORD = "Password successfully updated",
+  SUCCESS_UPDATE_AVATAR = "Avatar successfully uploaded",
+  SUCCESS_REMOVE_AVATAR = "Avatar successfully removed",
 }

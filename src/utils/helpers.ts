@@ -11,9 +11,14 @@ export const getLocalStorageItem = <T>(key: string): T | null => {
   }
 };
 
-export const setLocalStorageItem = <T>(key: string, data: T): void => {
+export const setLocalStorageItem = <T extends string | object | boolean>(
+  key: string,
+  data: T,
+): void => {
+  const dataToString =
+    typeof data === "object" ? JSON.stringify(data) : data.toString();
   try {
-    localStorage.setItem(key, JSON.stringify(data));
+    localStorage.setItem(key, dataToString);
   } catch (error) {
     console.error("Error while saving data to localStorage:", error);
   }

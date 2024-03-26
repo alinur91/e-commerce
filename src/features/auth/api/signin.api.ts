@@ -12,11 +12,17 @@ export const signin = createAsyncThunk<UserData, Credentials>(
         email,
         password,
       );
-      const { displayName, email: userEmail, photoURL } = userCredential.user;
+      const {
+        displayName,
+        email: userEmail,
+        photoURL,
+        uid,
+      } = userCredential.user;
       return {
         name: displayName,
         email: userEmail,
         photoURL,
+        uid,
       };
     } catch (error) {
       throw new Error(error as string);

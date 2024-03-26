@@ -5,9 +5,8 @@ import { useForm } from "react-hook-form";
 import { signup } from "@features/auth/api/signup.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TSignUpSchema, signUpSchema } from "@features/auth/lib/types";
-import { useAppDispatch, useAppSelector, useActions } from "@hooks/index";
-import { ClipLoader } from "react-spinners";
-import { toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from "@hooks/index";
+import { ClipLoader } from "@utils/icons";
 import { useEffect } from "react";
 import { selectAuthData } from "@features/auth/slices/selector";
 import { useNavigate } from "react-router-dom";
@@ -22,16 +21,7 @@ const LoginForm = () => {
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { error, loading, loggedInUser } = useAppSelector(selectAuthData);
-  const { setErrorToNull } = useActions();
-
-  useEffect(() => {
-    if (error) toast.error(error, { position: "bottom-right" });
-
-    return () => {
-      setErrorToNull();
-    };
-  }, [error, setErrorToNull]);
+  const { loading, loggedInUser } = useAppSelector(selectAuthData);
 
   useEffect(() => {
     if (loggedInUser) navigate("/");
@@ -51,13 +41,16 @@ const LoginForm = () => {
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
+          inputClassName="h-11"
           id="name"
           label="Full Name"
           placeholder="Your Full Name"
           errors={errors.name && errors.name.message}
+          autoFocus
           {...register("name")}
         />
         <Input
+          inputClassName="h-11"
           id="email"
           label="Email Address"
           type="email"
@@ -66,6 +59,7 @@ const LoginForm = () => {
           {...register("email")}
         />
         <Input
+          inputClassName="h-11"
           id="password"
           label="Password"
           type="password"
@@ -74,6 +68,7 @@ const LoginForm = () => {
           {...register("password")}
         />
         <Input
+          inputClassName="h-11"
           id="confirmPassword"
           label="Confirm Password"
           type="password"
@@ -82,11 +77,11 @@ const LoginForm = () => {
           {...register("confirmPassword")}
         />
         <Button
-          disabled={isSubmitting || loading}
-          className="mt-6 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
-          type={ButtonEnum.Primary}
+          disabled={loading || isSubmitting}
+          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
+          type={ButtonEnum.PRIMARY}
         >
-          {loading ? "Signing Up..." : "SIGN UP"}{" "}
+          {loading ? "Signing Up..." : "Sign up"}{" "}
           {loading && <ClipLoader color="#be7c18" size={24} />}
         </Button>
       </form>

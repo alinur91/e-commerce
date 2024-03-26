@@ -20,11 +20,18 @@ function Button({
   className,
 }: ButtonProps) {
   const base =
-    "flex justify-center items-center font-semibold rounded-md tracking-wide";
+    "flex justify-center items-center font-bold rounded-md tracking-wide uppercase text-sm";
+
+  const isDisabledClass = disabled
+    ? "disabled:bg-gray-200 disabled:text-gray-400 cursor-not-allowed"
+    : "bg-green-500 text-white";
 
   const styles = {
-    [ButtonEnum.Primary]: `${base} bg-green-500 text-white h-10 bg-gradient transition duration-300 border-green-800 border-2 w-full`,
-    [ButtonEnum.Secondary]: `${base} bg-white text-orange-200 h-10`,
+    [ButtonEnum.PRIMARY]: `${base} py-3 bg-gradient transition duration-300 border-green-800  w-full active:bg-green-600 ${isDisabledClass}`,
+    [ButtonEnum.SECONDARY]: `${base} bg-gray-100 text-gray-400 py-3 px-5`,
+    [ButtonEnum.DANGER]: `${base} bg-red-400 text-red-700  py-3 px-5 ${isDisabledClass}`,
+    [ButtonEnum.LIGHT]: `${base} bg-white text-gray-400 py-1 px-4`,
+    [ButtonEnum.WARNING]: `${base} bg-white text-orange-200 `,
   };
 
   if (to)

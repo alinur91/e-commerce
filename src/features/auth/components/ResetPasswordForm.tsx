@@ -11,12 +11,19 @@ const ResetPasswordForm = () => {
         We'll send you a link to reset your password
       </p>
       <form onSubmit={() => {}}>
-        <Input id="email" label="Email Address" type="email" />
+        <Input
+          inputClassName="h-11"
+          id="email"
+          label="Email Address"
+          type="email"
+          placeholder="Enter email address"
+          autoFocus
+        />
         <Button
-          className="mt-6 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800 "
-          type={ButtonEnum.Primary}
+          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
+          type={ButtonEnum.PRIMARY}
         >
-          VERIFY NOW
+          verify now
         </Button>
       </form>
       <AuthenticationNavigation page={AuthenticationPagesEnum.Reset_Password} />

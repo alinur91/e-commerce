@@ -6,7 +6,16 @@ type AvatarProps = {
 };
 
 const Avatar = ({ className, src }: AvatarProps) => {
-  return <img className={`${className}`} src={src || avatar} alt="" />;
+  const defaultAvatarSrc =
+    "https://yyfjumfmwgnvczjziqao.supabase.co/storage/v1/object/public/user/userPlaceHolder.jpg";
+
+  return (
+    <img
+      className={`${className}`}
+      src={src || defaultAvatarSrc || avatar}
+      alt=""
+    />
+  );
 };
 
 export default Avatar;

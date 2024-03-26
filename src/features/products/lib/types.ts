@@ -14,3 +14,9 @@ export type ProductData = {
 };
 
 export type ProductsData = ProductData[];
+
+export type ProductsState = {
+  productsList: ProductsData | null;
+  loading: false;
+  error: string | null;
+};

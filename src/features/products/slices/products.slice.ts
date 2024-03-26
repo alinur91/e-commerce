@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getProducts } from "@features/products/api/getProducts.api";
-import { ProductsData } from "@features/products/lib/types";
+import { ProductsData, ProductsState } from "@features/products/lib/types";
+import { handlePendingState } from "@features/auth/utils/helpers";
 
 const productsSlice = createSlice({
   name: "auth",
@@ -12,8 +13,7 @@ const productsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state) => {
-      state.loading = true;
-      state.error = null;
+      handlePendingState(state as ProductsState);
     });
     builder.addCase(getProducts.fulfilled, (state, action) => {
       state.loading = false;

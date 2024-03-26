@@ -21,7 +21,9 @@ const Product = ({ product }: ProductProps) => {
         defaultRating={product.rating}
       />
       <p className="text-2xl font-bold">${product.price}</p>
-      <Button type={ButtonEnum.Primary}>Add to Cart</Button>
+      <Button className="h-8 capitalize font-semibold" type={ButtonEnum.PRIMARY}>
+        Add to Cart
+      </Button>
     </Link>
   );
 };
