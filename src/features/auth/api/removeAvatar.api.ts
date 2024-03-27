@@ -5,9 +5,9 @@ import { auth, storage } from "@services/firebase/firebaseConfig";
 import { User, updateProfile } from "firebase/auth";
 
 // Define an asynchronous action creator to remove the avatar
-export const removeAvatar = createAsyncThunk(
+export const removeAvatar = createAsyncThunk<null, (file: null) => void>(
   "auth/removeAvatar",
-  async (_, { getState }) => {
+  async (setSelectedFile, { getState }) => {
     try {
       // Get the current state to access the user data
       const state = getState() as RootState;
@@ -23,6 +23,7 @@ export const removeAvatar = createAsyncThunk(
 
       // Update the user's profile to remove the photoURL.Empty string treated as null in firebase authentication
       await updateProfile(auth.currentUser as User, { photoURL: "" });
+      setSelectedFile(null); // reset the value of input type="file" to null
       // Return null to indicate successful removal
       return null;
     } catch (error) {

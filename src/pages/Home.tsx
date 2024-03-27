@@ -1,5 +1,5 @@
 import { Filters } from "@features/filters/components/index";
-import { getProducts } from "@features/products/api/getProducts.api";
+import { getProducts } from "@features/products/api/index";
 import { ProductsContainer } from "@features/products/components";
 import { useAppDispatch } from "@hooks/index";
 import ImageBanner from "@ui/ImageBanner";

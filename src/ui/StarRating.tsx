@@ -3,7 +3,7 @@ import { Star } from "@ui/index";
 import { useState } from "react";
 
 type StarRatingProps = {
-  maxRating: number;
+  maxRating?: number;
   color?: string;
   size: StarRatingSizeEnum;
   messages?: [];

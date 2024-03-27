@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@hooks/index";
 import { selectAuthData } from "@features/auth/slices/selector";
-import { ClipLoader } from "@utils/icons";
+import { MoonLoader } from "@utils/icons";
 import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
@@ -65,7 +65,7 @@ const SigninForm = () => {
           type={ButtonEnum.PRIMARY}
         >
           {loading ? "Signing in..." : "Sign in"}{" "}
-          {loading && <ClipLoader color="#be7c18" size={24} />}
+          {loading && <MoonLoader color="#be7c18" size={24} />}
         </Button>
       </form>
       <AuthenticationNavigation page={AuthenticationPagesEnum.Login} />

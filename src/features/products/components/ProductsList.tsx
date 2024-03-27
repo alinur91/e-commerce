@@ -16,7 +16,7 @@ const ProductsList = ({
   const getContent = (page: PagesEnum, productsList: ProductsData) => {
     if (productsList?.length > 0) {
       return productsList?.map((product) => (
-        <Product key={product.id} product={product} />
+        <Product key={product.productId} product={product} />
       ));
     } else {
       return page === PagesEnum.search ? (

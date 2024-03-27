@@ -6,7 +6,7 @@ import { signup } from "@features/auth/api/signup.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TSignUpSchema, signUpSchema } from "@features/auth/lib/types";
 import { useAppDispatch, useAppSelector } from "@hooks/index";
-import { ClipLoader } from "@utils/icons";
+import { MoonLoader } from "@utils/icons";
 import { useEffect } from "react";
 import { selectAuthData } from "@features/auth/slices/selector";
 import { useNavigate } from "react-router-dom";
@@ -82,7 +82,7 @@ const LoginForm = () => {
           type={ButtonEnum.PRIMARY}
         >
           {loading ? "Signing Up..." : "Sign up"}{" "}
-          {loading && <ClipLoader color="#be7c18" size={24} />}
+          {loading && <MoonLoader color="#be7c18" size={24} />}
         </Button>
       </form>
       <AuthenticationNavigation page={AuthenticationPagesEnum.Signup} />

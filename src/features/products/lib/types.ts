@@ -1,5 +1,5 @@
 export type ProductData = {
-  id: number;
+  productId: number;
   docID: string;
   title: string;
   description: string;
@@ -17,6 +17,7 @@ export type ProductsData = ProductData[];
 
 export type ProductsState = {
   productsList: ProductsData | null;
+  singleProduct: ProductData | null;
   loading: false;
   error: string | null;
 };

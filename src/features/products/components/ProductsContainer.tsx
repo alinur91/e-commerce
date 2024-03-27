@@ -1,6 +1,6 @@
 import { useAppSelector } from "@hooks/index";
 import { selectProductsData } from "@features/products/slices/selector";
-import { MoonLoader } from "react-spinners";
+import { MoonLoader } from "@utils/icons";
 import { ErrorMessage } from "@ui/index";
 import { ProductsList } from "@features/products/components/index";
 import { ProductsData } from "@features/products/lib/types";

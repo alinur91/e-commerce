@@ -5,7 +5,7 @@ import { removeAvatar, uploadAvatar } from "@features/auth/api";
 import { selectAuthData } from "@features/auth/slices/selector";
 import { useAppDispatch, useAppSelector } from "@hooks/index";
 import { useState } from "react";
-import { ClipLoader } from "@utils/icons";
+import { MoonLoader } from "@utils/icons";
 
 const UploadRemoveAvatar = () => {
   const {
@@ -29,8 +29,7 @@ const UploadRemoveAvatar = () => {
   };
 
   const handleRemoveAvatar = async () => {
-    await dispatch(removeAvatar());
-    setSelectedFile(null);
+    dispatch(removeAvatar(setSelectedFile));
   };
 
   return (
@@ -65,7 +64,7 @@ const UploadRemoveAvatar = () => {
           type={ButtonEnum.PRIMARY}
         >
           {uploadAvatarLoading ? "Uploading..." : "Upload"}{" "}
-          {uploadAvatarLoading && <ClipLoader color="#be7c18" size={24} />}
+          {uploadAvatarLoading && <MoonLoader color="#be7c18" size={24} />}
         </Button>
         <Button
           className="h-10 w-[150px] gap-1 text-xs md:h-12 md:w-48 md:text-sm"
@@ -74,7 +73,7 @@ const UploadRemoveAvatar = () => {
           type={ButtonEnum.DANGER}
         >
           {removeAvatarLoading ? "Removing..." : "Remove"}{" "}
-          {removeAvatarLoading && <ClipLoader color="#be7c18" size={24} />}
+          {removeAvatarLoading && <MoonLoader color="#be7c18" size={24} />}
         </Button>
       </div>
     </>

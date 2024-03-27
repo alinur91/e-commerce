@@ -20,7 +20,7 @@ export const handleSignSignupFulfilledState = (
     position: "bottom-right",
   });
 };
-export const handleRejectedState = (state: AuthState, message: string) => {
+export const handleRejectedState = (state: AuthState | ProductsState, message: string) => {
   state.loading = false;
   state.error = message;
   toast.error(message, { position: "bottom-right" });

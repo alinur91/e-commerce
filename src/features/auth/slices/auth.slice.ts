@@ -23,9 +23,8 @@ import {
   handleRemoveAvatarRejectedState,
 } from "@features/auth/utils/helpers";
 import { AuthState, UserData } from "@features/auth/lib/types";
-import { LocalStorageKeyEnum, ToastNotificationsEnum } from "@ts-types/enums";
+import { LocalStorageKeyEnum } from "@ts-types/enums";
 import { getLocalStorageItem } from "@utils/helpers";
-import { toast } from "react-toastify";
 
 // Get the user data from localStorage
 const initialLoggedInUserData = getLocalStorageItem<UserData>(
@@ -50,20 +49,7 @@ const authSlice = createSlice({
       updatePasswordError: null as string | null,
     },
   },
-  reducers: {
-    setCurrentUser: (state, action) => {
-      state.loading = false;
-      state.loggedInUser = action.payload;
-      toast.success(ToastNotificationsEnum.SUCCESS_SIGN_IN, {
-        position: "bottom-right",
-      });
-    },
-    setLoading: (state, action) => {
-      console.log(action);
-      state.loading = action.payload;
-      state.error = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // Handle signup action
     builder.addCase(signup.pending, (state) => {

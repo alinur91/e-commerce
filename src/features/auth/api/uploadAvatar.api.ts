@@ -5,7 +5,7 @@ import { auth, storage } from "@services/firebase/firebaseConfig";
 import { User, updateProfile } from "firebase/auth";
 
 // Define an asynchronous action creator using createAsyncThunk
-export const uploadAvatar = createAsyncThunk(
+export const uploadAvatar = createAsyncThunk<string, File>(
   "auth/uploadAvatar",
   async (file: File, { getState }) => {
     try {

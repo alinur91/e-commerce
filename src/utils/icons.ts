@@ -6,7 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogout } from "react-icons/md";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { ClipLoader } from "react-spinners";
+import { ClipLoader, MoonLoader } from "react-spinners";
 
 export {
   CiSearch,
@@ -18,4 +18,5 @@ export {
   MdOutlineLogout,
   FaCloudUploadAlt,
   ClipLoader,
+  MoonLoader,
 };
