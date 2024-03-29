@@ -7,6 +7,8 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogout } from "react-icons/md";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { ClipLoader, MoonLoader } from "react-spinners";
+import { IoMdClose } from "react-icons/io";
+
 
 export {
   CiSearch,
@@ -19,4 +21,5 @@ export {
   FaCloudUploadAlt,
   ClipLoader,
   MoonLoader,
+  IoMdClose,
 };

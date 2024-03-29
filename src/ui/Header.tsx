@@ -21,11 +21,11 @@ const Header = () => {
   const path = location.pathname === "/search" ? "/" : "/search";
 
   return (
-    <header className="sticky left-0 right-0 top-0 z-10  flex h-[60px] items-center justify-between border-b-2 border-gray-100 bg-white px-6 sm:h-[80px] sm:px-16 md:h-[100px] md:px-24">
+    <header className="sticky left-0 right-0 top-0 z-10  flex h-[60px] items-center justify-between border-b-2 border-gray-300 bg-white px-6 shadow-sm sm:h-[80px] sm:px-16 md:h-[100px] md:px-24">
       {" "}
       <Button to="/">
         <img
-          className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20"
+          className="h-12 w-12  sm:h-16 sm:w-16 md:h-20 md:w-20"
           src={logo}
           alt=""
         />

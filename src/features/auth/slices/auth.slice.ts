@@ -21,7 +21,7 @@ import {
   handleRemoveAvatarPendingState,
   handleRemoveAvatarFulfilledState,
   handleRemoveAvatarRejectedState,
-} from "@features/auth/utils/helpers";
+} from "@features/auth/lib/helpers";
 import { AuthState, UserData } from "@features/auth/lib/types";
 import { LocalStorageKeyEnum } from "@ts-types/enums";
 import { getLocalStorageItem } from "@utils/helpers";

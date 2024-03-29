@@ -20,7 +20,10 @@ const Product = ({ product }: ProductProps) => {
         size={StarRatingSizeEnum.small}
         defaultRating={product.rating}
       />
-      <p className="text-2xl font-bold">${product.price}</p>
+      <p className="text-2xl font-bold">
+        <span className="text-yellow-400">$</span>
+        {product.price}
+      </p>
       <Button
         className="h-8 font-semibold capitalize"
         type={ButtonEnum.PRIMARY}

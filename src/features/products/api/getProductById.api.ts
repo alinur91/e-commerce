@@ -4,7 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@services/firebase/firebaseConfig";
 
 export const getProductById = createAsyncThunk<ProductData, string>(
-  "getProductById",
+  "products/getProductById",
   async (productId) => {
     try {
       const productDocRef = doc(db, "products", productId);

@@ -1,12 +1,14 @@
 import { Filters } from "@features/filters/components/index";
 import { getProducts } from "@features/products/api/index";
 import { ProductsContainer } from "@features/products/components";
+// import { selectProductsData } from "@features/products/slices/selector";
 import { useAppDispatch } from "@hooks/index";
 import ImageBanner from "@ui/ImageBanner";
 import { useEffect } from "react";
 
 const Home = () => {
   const dispatch = useAppDispatch();
+  // const { productsList } = useAppSelector(selectProductsData);
 
   useEffect(() => {
     dispatch(getProducts());

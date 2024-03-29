@@ -1,4 +1,4 @@
-export enum Category {
+export enum CategoryEnum {
   "smartphones" = "Smartphones",
   "laptops" = "Laptops",
   "skincare" = "Skincare",
@@ -6,7 +6,7 @@ export enum Category {
   "all" = "All",
 }
 
-export enum PriceByAscDesc {
+export enum PriceByAscDescEnum {
   'ASC' = 'By Price | 0-9',
   'DESC' = 'By Price | 9-0',
 }

@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProducts, getProductById } from "@features/products/api/index";
+import {
+  getProducts,
+  getProductById,
+  getProductsByCategory,
+} from "@features/products/api/index";
 import {
   ProductData,
   ProductsData,
@@ -8,10 +12,11 @@ import {
 import {
   handlePendingState,
   handleRejectedState,
-} from "@features/auth/utils/helpers";
+} from "@features/auth/lib/helpers";
+import { handleProductsFulfilledState } from "@features/products/lib/helpers";
 
 const productsSlice = createSlice({
-  name: "auth",
+  name: "products",
   initialState: {
     productsList: null as ProductsData | null,
     singleProduct: null as ProductData | null,
@@ -24,8 +29,10 @@ const productsSlice = createSlice({
       handlePendingState(state as ProductsState);
     });
     builder.addCase(getProducts.fulfilled, (state, action) => {
-      state.loading = false;
-      state.productsList = action.payload;
+      handleProductsFulfilledState(
+        state as ProductsState,
+        action.payload as ProductsData,
+      );
     });
     builder.addCase(getProducts.rejected, (state, action) => {
       handleRejectedState(
@@ -41,6 +48,21 @@ const productsSlice = createSlice({
       state.singleProduct = action.payload;
     });
     builder.addCase(getProductById.rejected, (state, action) => {
+      handleRejectedState(
+        state as ProductsState,
+        action.error.message as string,
+      );
+    });
+    builder.addCase(getProductsByCategory.pending, (state) => {
+      handlePendingState(state as ProductsState);
+    });
+    builder.addCase(getProductsByCategory.fulfilled, (state, action) => {
+      handleProductsFulfilledState(
+        state as ProductsState,
+        action.payload as ProductsData,
+      );
+    });
+    builder.addCase(getProductsByCategory.rejected, (state, action) => {
       handleRejectedState(
         state as ProductsState,
         action.error.message as string,

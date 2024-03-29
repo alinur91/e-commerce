@@ -1,6 +1,7 @@
 import { ProductData } from "@features/products/lib/types";
 import { ButtonEnum, StarRatingSizeEnum } from "@ts-types/enums";
 import { Button, StarRating } from "@ui/index";
+import { IoMdClose } from "@utils/icons";
 
 type ProductProps = {
   product: ProductData;
@@ -11,7 +12,10 @@ const ProductOverview = ({ product }: ProductProps) => {
     product;
 
   return (
-    <div className="flex flex-col items-center gap-10 px-10 lg:flex-row">
+    <div className="relative flex flex-col items-center justify-center gap-10 px-10 lg:flex-row">
+      <Button to="/">
+        <IoMdClose className="absolute right-[5%] top-[-10%] text-4xl text-red-600 lg:right-[3%]" />
+      </Button>
       <img
         className="max-h-[300px] object-cover lg:max-h-[400px]"
         src={images[0]}
@@ -31,7 +35,6 @@ const ProductOverview = ({ product }: ProductProps) => {
             {stock} in stock
           </span>{" "}
           <StarRating
-            maxRating={rating}
             defaultRating={rating}
             size={StarRatingSizeEnum.small}
           />{" "}
