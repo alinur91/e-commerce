@@ -6,8 +6,9 @@ type ErrorMessageProps = {
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <MdError className="text-[200px] text-red-600" /> {message}
+    <div className="flex  flex-col items-center justify-center">
+      <MdError className="text-[200px] text-red-600" />
+      <p>{message}</p>
     </div>
   );
 };

@@ -20,7 +20,10 @@ export const handleSignSignupFulfilledState = (
     position: "bottom-right",
   });
 };
-export const handleRejectedState = (state: AuthState | ProductsState, message: string) => {
+export const handleRejectedState = (
+  state: AuthState | ProductsState,
+  message: string,
+) => {
   state.loading = false;
   state.error = message;
   toast.error(message, { position: "bottom-right" });
@@ -35,6 +38,7 @@ export const handleSignoutFulfilled = (state: AuthState) => {
   state.avatarActions.removeAvatarError = null;
   state.updatePasswordActions.updatePasswordError = null;
   removeLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER);
+  removeLocalStorageItem(LocalStorageKeyEnum.FILTERS);
   toast.success(ToastNotificationsEnum.SUCCESS_SIGN_OUT, {
     position: "bottom-right",
   });

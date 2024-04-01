@@ -14,7 +14,7 @@ const ProductOverview = ({ product }: ProductProps) => {
   return (
     <div className="relative flex flex-col items-center justify-center gap-10 px-10 lg:flex-row">
       <Button to="/">
-        <IoMdClose className="absolute right-[5%] top-[-10%] text-4xl text-red-600 lg:right-[3%]" />
+        <IoMdClose className="absolute right-[5%] text-4xl text-red-600 lg:right-[3%] lg:top-[-15%]" />
       </Button>
       <img
         className="max-h-[300px] object-cover lg:max-h-[400px]"
@@ -34,10 +34,7 @@ const ProductOverview = ({ product }: ProductProps) => {
           <span className="font-semibold text-gray-400">
             {stock} in stock
           </span>{" "}
-          <StarRating
-            defaultRating={rating}
-            size={StarRatingSizeEnum.small}
-          />{" "}
+          <StarRating rating={rating} size={StarRatingSizeEnum.small} />{" "}
         </div>
         <p className="text-2xl font-bold lg:text-3xl">💲{price}</p>
         <div className="flex">

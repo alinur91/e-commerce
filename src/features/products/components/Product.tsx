@@ -15,11 +15,7 @@ const Product = ({ product }: ProductProps) => {
     >
       <img className="h-28 w-40 object-cover" src={product.thumbnail} alt="" />
       <h4 className="text-xs font-semibold">{product.title}</h4>
-      <StarRating
-        maxRating={5}
-        size={StarRatingSizeEnum.small}
-        defaultRating={product.rating}
-      />
+      <StarRating size={StarRatingSizeEnum.small} rating={product.rating} />
       <p className="text-2xl font-bold">
         <span className="text-yellow-400">$</span>
         {product.price}

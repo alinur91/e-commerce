@@ -1,22 +1,22 @@
 import { Filters } from "@features/filters/components/index";
-import { getProducts } from "@features/products/api/index";
+import { selectFiltersData } from "@features/filters/slices/selector";
+import { getFilteredProducts } from "@features/products/api/index";
 import { ProductsContainer } from "@features/products/components";
-// import { selectProductsData } from "@features/products/slices/selector";
-import { useAppDispatch } from "@hooks/index";
+import { useAppDispatch, useAppSelector } from "@hooks/index";
 import ImageBanner from "@ui/ImageBanner";
 import { useEffect } from "react";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  // const { productsList } = useAppSelector(selectProductsData);
+  const { price, sortBy, rating, category } = useAppSelector(selectFiltersData);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(getFilteredProducts({ price, sortBy, rating, category }));
+  }, [dispatch, price, sortBy, rating, category]);
 
   return (
     <div>
-      <div className="border-b-2 border-b-gray-300 shadow-sm">
+      <div className="border-b-2 border-b-gray-300 shadow-lg">
         <ImageBanner />
         <Filters />
       </div>

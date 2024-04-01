@@ -1,18 +1,15 @@
 import { search } from "@data/index";
-import { getProducts } from "@features/products/api/getProducts.api";
+import { getProducts } from "@features/products/api";
 import { ProductsList } from "@features/products/components";
 import { ProductsData } from "@features/products/lib/types";
-import { selectProductsData } from "@features/products/slices/selector";
-import { useAppSelector, useAppDispatch } from "@hooks/index";
 import { NoSearchResultsMessagesEnum, PagesEnum } from "@ts-types/enums";
 import { Button, Input, NoSearchResultsMessage } from "@ui/index";
 import { FaHome } from "@utils/icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const SearchPage = () => {
-  const { productsList } = useAppSelector(selectProductsData);
-  const dispatch = useAppDispatch();
+  const [productsList, setProductsList] = useState<ProductsData>([]);
   const { register, watch } = useForm({
     defaultValues: {
       searchTerm: "",
@@ -25,14 +22,17 @@ const SearchPage = () => {
   );
 
   useEffect(() => {
-    if (productsList === null) dispatch(getProducts());
-  }, [dispatch, productsList]);
+    (async () => {
+      const products = await getProducts();
+      setProductsList(products as ProductsData);
+    })();
+  }, [productsList]);
 
   return (
     <div className="flex flex-col items-center justify-center gap-12 pt-10">
       <Input
         id="searchTerm"
-        inputClassName="h-[40px] w-[390px] focus:outline-yellow-700 md:h-[50px] md:w-[500px]"
+        inputClassName="h-[40px] w-[350px] focus:outline-yellow-700 md:h-[50px] md:w-[500px]"
         autoFocus
         {...register("searchTerm")}
       >

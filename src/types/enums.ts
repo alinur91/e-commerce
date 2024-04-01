@@ -29,6 +29,7 @@ export enum PagesEnum {
 
 export enum LocalStorageKeyEnum {
   LOGGED_IN_USER = "loggedInUser",
+  FILTERS = "filters",
 }
 
 export enum ToastNotificationsEnum {

@@ -5,10 +5,10 @@ type AvatarProps = {
   src: string | null | undefined;
 };
 
-const Avatar = ({ className, src }: AvatarProps) => {
-  const defaultAvatarSrc =
-    "https://yyfjumfmwgnvczjziqao.supabase.co/storage/v1/object/public/user/userPlaceHolder.jpg";
+const defaultAvatarSrc =
+  "https://yyfjumfmwgnvczjziqao.supabase.co/storage/v1/object/public/user/userPlaceHolder.jpg";
 
+const Avatar = ({ className, src }: AvatarProps) => {
   return (
     <img
       className={`${className}`}

@@ -1,27 +1,47 @@
-// import { useState } from "react";
+import { useAppSelector } from "@hooks/useAppSelector";
+import { getMaxPrice } from "@utils/helpers";
+import { useActions } from "@hooks/useActions";
+import { selectFiltersData } from "@features/filters/slices/selector";
+import { getProducts } from "@features/products/api";
+import { useEffect, useMemo, useState } from "react";
+import { ProductsData } from "@features/products/lib/types";
 
 const Price = () => {
-  // const [price, setPrice] = useState(90);
+  const { setPrice } = useActions();
+  const [totalProducts, setTotalProducts] = useState<ProductsData>([]);
+  const { price } = useAppSelector(selectFiltersData);
+  const maxPrice = useMemo(() => getMaxPrice(totalProducts), [totalProducts]);
 
-  // Function to handle changes in the range input
-  // const handlePriceChange = () => {
-  //   // Update the state with the new value of the range input
-  //   setPrice(parseInt(event.target.value));
-  // };
+  // Calculate the adjusted max value to ensure it's divisible by the step size
+  const adjustedMaxPrice = Math.ceil(maxPrice / 20) * 20;
+
+  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(parseInt(e.target.value));
+  };
+
+  useEffect(() => {
+    (async () => {
+      const totalProducts = await getProducts();
+      setTotalProducts(totalProducts as ProductsData);
+    })();
+  }, []);
 
   return (
-    <div className="flex flex-col items-start gap-3">
+    <div className="flex  flex-col items-start gap-3 text-lg font-semibold text-gray-400">
       <h3 className="text-lg font-semibold text-gray-400">Price</h3>
-      <input
-        type="range"
-        name="price"
-        id="price"
-        min="0"
-        max="100"
-        // value={price} // Set the value of the range input to the state value
-        step="20"
-        // onChange={handlePriceChange} // Call handlePriceChange when the input value changes
-      />
+      <div className="flex w-64 items-center gap-4">
+        <span>{price}</span>
+        <input
+          type="range"
+          className="w-full outline-none"
+          min={0}
+          value={price}
+          max={adjustedMaxPrice}
+          step={20}
+          onChange={handleRangeChange}
+        />
+        <span>{maxPrice || null}</span>
+      </div>
     </div>
   );
 };

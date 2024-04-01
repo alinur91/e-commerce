@@ -9,7 +9,7 @@ export const signUpSchema = z
     name: z
       .string()
       .min(2, "Name must be at least 2 characters")
-      .max(10, "Name must be at most 10 characters"),
+      .max(8, "Name must be at most 8 characters"),
     email: z.string().email(),
     password: z.string().min(6, "Password must be at least 6 characters"),
     confirmPassword: z

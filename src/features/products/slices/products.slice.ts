@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  getProducts,
-  getProductById,
-  getProductsByCategory,
-} from "@features/products/api/index";
+import { getFilteredProducts, getProductById } from "@features/products/api/index";
 import {
   ProductData,
   ProductsData,
@@ -25,16 +21,16 @@ const productsSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getProducts.pending, (state) => {
+    builder.addCase(getFilteredProducts.pending, (state) => {
       handlePendingState(state as ProductsState);
     });
-    builder.addCase(getProducts.fulfilled, (state, action) => {
+    builder.addCase(getFilteredProducts.fulfilled, (state, action) => {
       handleProductsFulfilledState(
         state as ProductsState,
         action.payload as ProductsData,
       );
     });
-    builder.addCase(getProducts.rejected, (state, action) => {
+    builder.addCase(getFilteredProducts.rejected, (state, action) => {
       handleRejectedState(
         state as ProductsState,
         action.error.message as string,
@@ -48,21 +44,6 @@ const productsSlice = createSlice({
       state.singleProduct = action.payload;
     });
     builder.addCase(getProductById.rejected, (state, action) => {
-      handleRejectedState(
-        state as ProductsState,
-        action.error.message as string,
-      );
-    });
-    builder.addCase(getProductsByCategory.pending, (state) => {
-      handlePendingState(state as ProductsState);
-    });
-    builder.addCase(getProductsByCategory.fulfilled, (state, action) => {
-      handleProductsFulfilledState(
-        state as ProductsState,
-        action.payload as ProductsData,
-      );
-    });
-    builder.addCase(getProductsByCategory.rejected, (state, action) => {
       handleRejectedState(
         state as ProductsState,
         action.error.message as string,

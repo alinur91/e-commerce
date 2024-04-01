@@ -1,3 +1,3 @@
-export { getProducts } from "./getProducts.api";
 export { getProductById } from "./getProductById.api";
-export { getProductsByCategory } from "./getProductsByCategory.api";
+export { getFilteredProducts } from "./getFilteredProducts.api";
+export { getProducts } from "./getProducts";

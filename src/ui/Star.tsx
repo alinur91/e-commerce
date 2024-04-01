@@ -21,9 +21,10 @@ const Star = ({
   index,
   tempRating,
 }: StarProps) => {
-  const largeClass =
-    size === StarRatingSizeEnum.large ? "text-xl md:text-2xl" : "";
-  const smallClass = size === StarRatingSizeEnum.small ? "text-md" : "";
+  const sizeClasses =
+    size === StarRatingSizeEnum.large
+      ? "text-xl md:text-2xl"
+      : "text-md cursor-auto";
 
   const isStarYellowClass =
     tempRating >= index + 1 || rating >= index + 1
@@ -33,7 +34,7 @@ const Star = ({
   return (
     <span
       role="button"
-      className={`flex-auto ${isStarYellowClass} ${smallClass} ${largeClass}`}
+      className={`flex-auto ${isStarYellowClass} ${sizeClasses}`}
       onClick={onRate}
       onMouseEnter={onHoverIn}
       onMouseLeave={onHoverOut}
