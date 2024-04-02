@@ -61,11 +61,11 @@ const SigninForm = () => {
         />
         <Button
           disabled={isSubmitting || loading}
-          className="mt-6 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800 h-11"
+          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
           type={ButtonEnum.PRIMARY}
         >
           {loading ? "Signing in..." : "Sign in"}{" "}
-          {loading && <MoonLoader color="#be7c18" size={24} />}
+          {loading && <MoonLoader color="#915c0d" size={24} />}
         </Button>
       </form>
       <AuthenticationNavigation page={AuthenticationPagesEnum.Login} />

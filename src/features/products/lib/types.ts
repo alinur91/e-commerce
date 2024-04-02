@@ -1,5 +1,5 @@
 export type ProductData = {
-  productId: number;
+  productId: string;
   docID: string;
   title: string;
   description: string;
@@ -11,6 +11,7 @@ export type ProductData = {
   category: string;
   thumbnail: string;
   images: Array<string>;
+  id?: string;
 };
 
 export type ProductsData = ProductData[];

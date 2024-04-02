@@ -8,7 +8,8 @@ import { MdOutlineLogout } from "react-icons/md";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { ClipLoader, MoonLoader } from "react-spinners";
 import { IoMdClose } from "react-icons/io";
-
+import { FaPlusCircle } from "react-icons/fa";
+import { FaMinusCircle } from "react-icons/fa";
 
 export {
   CiSearch,
@@ -22,4 +23,6 @@ export {
   ClipLoader,
   MoonLoader,
   IoMdClose,
+  FaPlusCircle,
+  FaMinusCircle,
 };

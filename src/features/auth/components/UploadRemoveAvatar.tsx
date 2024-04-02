@@ -58,22 +58,22 @@ const UploadRemoveAvatar = () => {
       </div>
       <div className="mt-5 flex items-center gap-6">
         <Button
-          className="h-10 w-[150px] gap-1 text-xs md:h-12 md:w-48 md:text-sm"
+          className="h-10 w-[150px] gap-1 text-xs md:h-12 md:w-48 md:text-sm disabled:bg-gray-200 disabled:text-gray-400 "
           disabled={uploadAvatarLoading || !selectedFile}
           onClick={handleUploadAvatar}
           type={ButtonEnum.PRIMARY}
         >
           {uploadAvatarLoading ? "Uploading..." : "Upload"}{" "}
-          {uploadAvatarLoading && <MoonLoader color="#be7c18" size={24} />}
+          {uploadAvatarLoading && <MoonLoader color="#915c0d" size={24} />}
         </Button>
         <Button
-          className="h-10 w-[150px] gap-1 text-xs md:h-12 md:w-48 md:text-sm"
+          className="h-10 w-[150px] gap-1 text-xs md:h-12 md:w-48 md:text-sm disabled:bg-gray-200 disabled:text-gray-400 "
           disabled={removeAvatarLoading || !loggedInUser?.photoURL}
           onClick={handleRemoveAvatar}
           type={ButtonEnum.DANGER}
         >
           {removeAvatarLoading ? "Removing..." : "Remove"}{" "}
-          {removeAvatarLoading && <MoonLoader color="#be7c18" size={24} />}
+          {removeAvatarLoading && <MoonLoader color="#915c0d" size={24} />}
         </Button>
       </div>
     </>

@@ -51,12 +51,12 @@ const UpdatePasswordForm = () => {
           {...register("confirmPassword")}
         />
         <Button
-          className="h-12 gap-3"
+          className="h-12 gap-3 disabled:bg-gray-200 disabled:text-gray-400 "
           disabled={isSubmitting || updatePasswordLoading}
           type={ButtonEnum.PRIMARY}
         >
           {updatePasswordLoading ? "Updating password..." : "Update password"}{" "}
-          {updatePasswordLoading && <ClipLoader color="#be7c18" size={24} />}
+          {updatePasswordLoading && <ClipLoader color="#915c0d" size={24} />}
         </Button>
       </form>
     </div>

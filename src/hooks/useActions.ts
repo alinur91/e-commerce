@@ -4,11 +4,13 @@ import { useDispatch } from "react-redux";
 import { actions as authActions } from "@features/auth/slices/auth.slice.ts";
 import { actions as productsActions } from "@features/products/slices/products.slice";
 import { actions as filtersActions } from "@features/filters/slices/filters.slice";
+import { actions as cartActions } from "@features/cart/slices/cartSlice";
 
 const rootActions = {
   ...authActions,
   ...productsActions,
   ...filtersActions,
+  ...cartActions,
 };
 
 export const useActions = () => {

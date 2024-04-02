@@ -38,4 +38,6 @@ export enum ToastNotificationsEnum {
   SUCCESS_UPDATE_PASSWORD = "Password successfully updated",
   SUCCESS_UPDATE_AVATAR = "Avatar successfully uploaded",
   SUCCESS_REMOVE_AVATAR = "Avatar successfully removed",
+  SUCCESS_ADD_TO_CART = "Product added to cart",
+  SUCCESS_REMOVE_FROM_CART = "Product removed from cart",
 }

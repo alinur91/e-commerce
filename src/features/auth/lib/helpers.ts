@@ -1,11 +1,14 @@
 import { AuthState, UserData } from "@features/auth/lib/types";
+import { CartState } from "@features/cart/lib/types";
 import { ProductsState } from "@features/products/lib/types";
 import { LocalStorageKeyEnum, ToastNotificationsEnum } from "@ts-types/enums";
 import { removeLocalStorageItem, setLocalStorageItem } from "@utils/helpers";
 import { toast } from "react-toastify";
 
 //SIGN IN, SIGN UP
-export const handlePendingState = (state: AuthState | ProductsState) => {
+export const handlePendingState = (
+  state: AuthState | ProductsState | CartState,
+) => {
   state.loading = true;
   state.error = null;
 };
@@ -18,15 +21,16 @@ export const handleSignSignupFulfilledState = (
   setLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER, userData);
   toast.success(ToastNotificationsEnum.SUCCESS_SIGN_IN, {
     position: "bottom-right",
+    autoClose: 1000,
   });
 };
 export const handleRejectedState = (
-  state: AuthState | ProductsState,
+  state: AuthState | ProductsState | CartState,
   message: string,
 ) => {
   state.loading = false;
   state.error = message;
-  toast.error(message, { position: "bottom-right" });
+  toast.error(message, { position: "bottom-right", autoClose: 1000 });
 };
 
 //SIGN OUT
@@ -41,6 +45,7 @@ export const handleSignoutFulfilled = (state: AuthState) => {
   removeLocalStorageItem(LocalStorageKeyEnum.FILTERS);
   toast.success(ToastNotificationsEnum.SUCCESS_SIGN_OUT, {
     position: "bottom-right",
+    autoClose: 1000,
   });
 };
 
@@ -53,6 +58,7 @@ export const handleUpdatePasswordFulfilled = (state: AuthState) => {
   state.updatePasswordActions.updatePasswordLoading = false;
   toast.info(ToastNotificationsEnum.SUCCESS_UPDATE_PASSWORD, {
     position: "bottom-center",
+    autoClose: 1000,
   });
 };
 export const handleUpdatePasswordRejectedState = (
@@ -61,7 +67,7 @@ export const handleUpdatePasswordRejectedState = (
 ) => {
   state.updatePasswordActions.updatePasswordLoading = false;
   state.updatePasswordActions.updatePasswordError = message;
-  toast.error(message, { position: "bottom-center" });
+  toast.error(message, { position: "bottom-center", autoClose: 1000 });
 };
 
 //UPLOAD AVATAR
@@ -83,6 +89,7 @@ export const handleUploadAvatarFulfilledState = (
   setLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER, loggedInUserData);
   toast.info(ToastNotificationsEnum.SUCCESS_UPDATE_AVATAR, {
     position: "top-center",
+    autoClose: 1000,
   });
 };
 export const handleUploadAvatarRejectedState = (
@@ -91,7 +98,7 @@ export const handleUploadAvatarRejectedState = (
 ) => {
   state.avatarActions.uploadAvatarLoading = false;
   state.avatarActions.uploadAvatarError = message;
-  toast.error(message, { position: "top-center" });
+  toast.error(message, { position: "top-center", autoClose: 1000 });
 };
 
 //REMOVE AVATAR
@@ -113,6 +120,7 @@ export const handleRemoveAvatarFulfilledState = (
   setLocalStorageItem(LocalStorageKeyEnum.LOGGED_IN_USER, loggedInUserData);
   toast.info(ToastNotificationsEnum.SUCCESS_REMOVE_AVATAR, {
     position: "top-center",
+    autoClose: 1000,
   });
 };
 export const handleRemoveAvatarRejectedState = (
@@ -121,5 +129,5 @@ export const handleRemoveAvatarRejectedState = (
 ) => {
   state.avatarActions.removeAvatarLoading = false;
   state.avatarActions.removeAvatarError = message;
-  toast.error(message, { position: "top-center" });
+  toast.error(message, { position: "top-center", autoClose: 1000 });
 };

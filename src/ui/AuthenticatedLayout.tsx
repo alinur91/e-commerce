@@ -1,23 +1,43 @@
 import { Outlet } from "react-router-dom";
 import { Footer, Header } from "@ui/index";
 import { useEffect } from "react";
-import { auth } from "@services/firebase/firebaseConfig";
+import { auth, db } from "@services/firebase/firebaseConfig";
 import { useActions } from "@hooks/index";
+import { collection, onSnapshot } from "@firebase/firestore";
+import { ProductData, ProductsData } from "@features/products/lib/types";
 
 const AuthenticatedLayout = () => {
+  const { updateCartProducts } = useActions();
+
   const { resetFiltersState } = useActions();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         //
       } else {
-        resetFiltersState();
+        resetFiltersState(); // reset filters state on sign out
       }
     });
 
     // Unsubscribe when component unmounts
     return () => unsubscribe();
   }, [resetFiltersState]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "cart"), (querySnapshot) => {
+      const productsData = [] as ProductsData;
+      querySnapshot.forEach((doc) => {
+        const data = { ...doc.data(), id: doc.id };
+        productsData.push(data as ProductData);
+      });
+      updateCartProducts(productsData);
+    });
+
+    return () => {
+      // Unsubscribe from real-time updates when the component unmounts
+      unsubscribe();
+    };
+  }, [updateCartProducts]);
 
   return (
     <div className="flex min-h-dvh flex-col items-center">

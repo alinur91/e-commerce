@@ -5,9 +5,11 @@ import { Avatar, Button, DropDownOptions } from ".";
 import { useRef, useState } from "react";
 import { useClickOutside, useAppSelector } from "@hooks/index";
 import { useLocation } from "react-router-dom";
+import { selectCartData } from "@features/cart/slices/selector";
 
 const Header = () => {
   const { loggedInUser } = useAppSelector(selectAuthData);
+  const { cartProducts } = useAppSelector(selectCartData);
   const [showDropDown, setShowDropDown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -30,13 +32,18 @@ const Header = () => {
           alt=""
         />
       </Button>
-      <div className="flex items-center gap-4  text-gray-600 ">
+      <div className=" flex items-center  gap-4 text-gray-600">
         <Button to={path}>
           <CiSearch className="text-3xl text-gray-400 sm:text-4xl" />
         </Button>
-        <IoCartOutline className="text-3xl text-gray-400 sm:text-4xl" />
+        <div className="relative cursor-pointer">
+          <IoCartOutline className="text-3xl text-gray-400 sm:text-4xl" />
+          <div className="flex-shrink-1 absolute left-[55%] top-[-30%] flex h-5 w-5 items-center justify-center rounded-full bg-red-700 font-bold text-white md:h-6 md:w-6">
+            {cartProducts.length}
+          </div>
+        </div>
         <div
-          className="relative flex cursor-pointer items-center gap-2"
+          className="flex cursor-pointer items-center gap-2 relative"
           onClick={handleClick}
           ref={dropdownRef}
         >
