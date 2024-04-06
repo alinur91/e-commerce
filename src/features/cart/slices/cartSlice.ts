@@ -21,7 +21,7 @@ const cartSlice = createSlice({
     error: null as string | null,
   },
   reducers: {
-    updateCartProducts(state, action) {
+    setCartProducts(state, action) {
       state.cartProducts = action.payload;
     },
   },
@@ -38,8 +38,8 @@ const cartSlice = createSlice({
     builder.addCase(removeProductFromCart.pending, (state) => {
       handlePendingState(state);
     });
-    builder.addCase(removeProductFromCart.fulfilled, (state, action) => {
-      handleRemoveFromCartFulfilledState(state, action.payload);
+    builder.addCase(removeProductFromCart.fulfilled, (state) => {
+      handleRemoveFromCartFulfilledState(state);
     });
     builder.addCase(removeProductFromCart.rejected, (state, action) => {
       handleRejectedState(state, action.payload as string);

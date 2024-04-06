@@ -5,3 +5,8 @@ export type CartState = {
   loading: boolean;
   error: string | null;
 };
+
+export enum DecreaseQuantityEnum {
+  DECREASE = "decrease",
+  REMOVE = "remove",
+}

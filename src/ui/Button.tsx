@@ -19,14 +19,13 @@ function Button({
   to,
   className,
 }: ButtonProps) {
-  const base = `flex justify-center items-center font-bold rounded-md text-white tracking-wide uppercase text-sm disabled:cursor-not-allowed`;
+  const base = `flex justify-center items-center font-bold rounded-md  tracking-wide uppercase text-sm disabled:cursor-not-allowed outline-none`;
 
   const styles = {
-    [ButtonEnum.PRIMARY]: `${base} py-3 bg-gradient transition duration-300 border-green-800  w-full active:bg-green-600  bg-green-500`,
-    [ButtonEnum.SECONDARY]: `${base} bg-gray-100 text-gray-400 py-3 px-5`,
-    [ButtonEnum.DANGER]: `${base} bg-red-600 text-red-700  py-3 px-5`,
-    [ButtonEnum.LIGHT]: `${base} bg-gray-100 text-gray-400 py-1 px-4 border-2 border-gray-200 border-solid`,
-    [ButtonEnum.WARNING]: `${base} bg-white text-orange-200 `,
+    [ButtonEnum.PRIMARY]: `${base} py-3 bg-gradient transition duration-300 border-green-800  w-full active:bg-green-600  bg-green-500 text-white`,
+    [ButtonEnum.DANGER]: `${base} bg-red-600 text-red-700  py-3 px-5 text-white border-1 border-red-900`,
+    [ButtonEnum.LIGHT]: `${base} rounded-lg border-2 border-gray-300 text-xl text-gray-500 h-8 flex-1 bg-gray-100`,
+    [ButtonEnum.WARNING]: `${base} text-orange-600 text-base font-normal`,
   };
 
   if (to)

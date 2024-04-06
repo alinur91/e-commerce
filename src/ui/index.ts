@@ -15,3 +15,6 @@ export { default as ImageWithOverlay } from "./ImageWithOverlay ";
 export { default as AuthenticationNavigation } from "./AuthenticationNavigation";
 export { default as StarRating } from "./StarRating";
 export { default as Star } from "./Star";
+export { default as CartProductsSidebar } from "./CartProductsSidebar";
+export { default as CartProductsSidebarContainer } from "./CartProductsSidebarContainer";
+export { default as AddRemoveQuantityButtons } from "./AddRemoveQuantityButtons";

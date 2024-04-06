@@ -1,6 +1,5 @@
 export enum ButtonEnum {
   PRIMARY = "PRIMARY",
-  SECONDARY = "SECONDARY",
   LIGHT = "LIGHT",
   WARNING = "WARNING",
   DANGER = "DANGER",

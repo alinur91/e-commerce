@@ -8,6 +8,8 @@ import { FaPlusCircle, FaMinusCircle } from "@utils/icons";
 import { useAppSelector } from "@hooks/useAppSelector";
 import { selectCartData } from "@features/cart/slices/selector";
 import { useState } from "react";
+import { formatNumberWithCommas } from "@utils/helpers";
+import { DecreaseQuantityEnum } from "@features/cart/lib/types";
 
 type ProductProps = {
   product: ProductData;
@@ -26,12 +28,16 @@ const Product = ({ product }: ProductProps) => {
     setIsLoading(true);
 
     if (foundProduct) {
-      await dispatch(removeProductFromCart(product.productId));
-      setIsLoading(false);
+      await dispatch(
+        removeProductFromCart({
+          productId: product.productId,
+          operation: DecreaseQuantityEnum.REMOVE,
+        }),
+      );
     } else {
       await dispatch(addProductToCart(product));
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -49,7 +55,8 @@ const Product = ({ product }: ProductProps) => {
           <StarRating size={StarRatingSizeEnum.small} rating={product.rating} />
           <p className="text-2xl font-bold">
             <span className="text-yellow-400">$</span>
-            {product.price}
+
+            {formatNumberWithCommas(product.price)}
           </p>
         </div>
       </Link>
