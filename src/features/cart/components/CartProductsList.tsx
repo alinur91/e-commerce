@@ -5,9 +5,9 @@ type CartProductsProps = {
   cartProducts: ProductsData;
 };
 
-const CartProducts = ({ cartProducts }: CartProductsProps) => {
+const CartProductsList = ({ cartProducts }: CartProductsProps) => {
   return (
-    <div className="h-[400px] space-y-5 overflow-y-auto p-1">
+    <div className="max-h-[400px] space-y-5 overflow-y-auto p-1">
       {cartProducts.map((cartProduct) => (
         <CartProduct key={cartProduct.productId} cartProduct={cartProduct} />
       ))}
@@ -15,4 +15,4 @@ const CartProducts = ({ cartProducts }: CartProductsProps) => {
   );
 };
 
-export default CartProducts;
+export default CartProductsList;

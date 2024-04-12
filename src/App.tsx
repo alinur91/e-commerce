@@ -7,6 +7,7 @@ import {
   ProductPage,
   SearchPage,
   ProfilePage,
+  OrderPage,
 } from "./pages";
 import { AuthenticatedLayout, ProtectedRoute } from "./ui";
 import { ToastContainer } from "react-toastify";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/order",
+        element: <OrderPage />,
       },
     ],
   },

@@ -1,17 +1,18 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { CartProductsSidebarContainer, Footer, Header } from "@ui/index";
 import { useEffect, useRef, useState } from "react";
-import { auth, db } from "@services/firebase/firebaseConfig";
-import { useActions, useClickOutside } from "@hooks/index";
-import { collection, onSnapshot } from "@firebase/firestore";
-import { ProductData, ProductsData } from "@features/products/lib/types";
+import { useAppSelector, useClickOutside } from "@hooks/index";
+import { useUserDataSubscriptionEffect } from "@hooks/index";
+import { MoonLoader } from "@utils/icons";
+import { selectAuthData } from "@features/auth/slices/selector";
 
 const AuthenticatedLayout = () => {
-  const { setCartProducts: setCartProducts, resetFiltersState } = useActions();
+  const { loading } = useAppSelector(selectAuthData);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const sidebarContentRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  useUserDataSubscriptionEffect();
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
@@ -26,38 +27,17 @@ const AuthenticatedLayout = () => {
   useEffect(() => {
     handleCloseSidebar();
   }, [location]);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (!authUser) {
-        resetFiltersState(); // reset filters state on sign out
-        //
-      }
-    });
-    // Unsubscribe when component unmounts
-    return () => unsubscribe();
-  }, [resetFiltersState]);
-
-  useEffect(() => {
-    // subscribing to cart collection, whenever something changes(remove,add product), it gives the latest data, then write latest data to state.cart.cartProducts
-    const unsubscribe = onSnapshot(collection(db, "cart"), (querySnapshot) => {
-      const productsData = [] as ProductsData;
-      querySnapshot.forEach((doc) => {
-        const data = { ...doc.data(), id: doc.id };
-        productsData.push(data as ProductData);
-      });
-      setCartProducts(productsData); //write to state.cart.cartProducts
-    });
-
-    return () => {
-      // Unsubscribe from real-time updates when the component unmounts
-      unsubscribe();
-    };
-  }, [setCartProducts]);
+  
+  if (loading)
+    return (
+      <div className="flex h-dvh items-center justify-center">
+        <MoonLoader color="#915c0d" />
+      </div>
+    );
 
   return (
-    <div className="relative flex min-h-dvh flex-col items-center">
-      <div className="w-full flex-1 border-l-gray-100 border-r-gray-100 shadow-xl 2xl:container lg:border-l-2 lg:border-r-2 2xl:mx-auto">
+    <div className="relative">
+      <div className="border-l-gray-100 border-r-gray-100 shadow-xl 2xl:container lg:border-l-2 lg:border-r-2 2xl:mx-auto">
         <div ref={headerRef}>
           <Header handleToggleSidebar={handleToggleSidebar} />
         </div>
@@ -67,9 +47,9 @@ const AuthenticatedLayout = () => {
             open={isSidebarOpen}
           />
         )}
-        <main className="w-full">
+        <div className="min-h-dvh">
           <Outlet />
-        </main>
+        </div>
       </div>
       <Footer />
     </div>

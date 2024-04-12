@@ -1,3 +1,4 @@
+import { DiscountTypeEnum, type DiscountsInfo } from "@features/cart/lib/types";
 import { ProductsData } from "@features/products/lib/types";
 
 export const getLocalStorageItem = <T>(key: string): T | null => {
@@ -34,12 +35,38 @@ export const removeLocalStorageItem = (key: string): void => {
   }
 };
 
-export const getMaxPrice = (products: ProductsData) => {
+export const mostExpensivePrice = (products: ProductsData) => {
   return products.reduce(
     (maxPrice, product) =>
       maxPrice > product.price ? maxPrice : product.price,
     0,
   );
+};
+
+export const totalAmount = (cartProducts: ProductsData) => {
+  return cartProducts.reduce(
+    (totalAmount, product) => totalAmount + product.price * product.quantity!,
+    0,
+  );
+};
+
+export const hasCouponApplied = (discountInfo: DiscountsInfo) =>
+  Object.keys(discountInfo).length > 0;
+
+export const calculateDiscountValue = (
+  totalAmountValue: number,
+  discountInfo: DiscountsInfo,
+) => {
+  let discountValue;
+
+  if (discountInfo.discountType === DiscountTypeEnum.FLAT) {
+    discountValue = discountInfo.value;
+  }
+  if (discountInfo.discountType === DiscountTypeEnum.PERCENT) {
+    discountValue = Math.floor(totalAmountValue * discountInfo.value);
+  }
+
+  return discountValue;
 };
 
 export const formatNumberWithCommas = (number: number) =>

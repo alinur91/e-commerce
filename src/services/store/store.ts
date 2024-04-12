@@ -10,6 +10,7 @@ const reducers = combineReducers({
   products: productsReducer,
   filters: filtersReducer,
   cart: cartReducer,
+  orderDetails: ()=>{}
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

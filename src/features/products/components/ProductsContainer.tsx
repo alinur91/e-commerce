@@ -9,8 +9,8 @@ const ProductsContainer = () => {
   const { error, productsList, loading } = useAppSelector(selectProductsData);
 
   return (
-    <div className="px-6 py-4 md:px-24 md:py-10">
-      <div className="mb-8 flex justify-between">
+    <div className="w-full px-6  py-4 md:px-24 md:py-10">
+      <div className="mb-8 flex h-8 justify-between">
         <h1 className="flex items-center gap-3 text-lg font-bold md:text-2xl">
           Popular Products {loading && <MoonLoader color="#915c0d" size={24} />}{" "}
         </h1>

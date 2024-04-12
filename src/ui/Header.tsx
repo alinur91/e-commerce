@@ -38,9 +38,11 @@ const Header = ({ handleToggleSidebar }: HeaderProps) => {
         </Button>
         <div className="relative cursor-pointer" onClick={handleToggleSidebar}>
           <IoCartOutline className="text-3xl text-gray-400 sm:text-4xl" />
-          <div className="flex-shrink-1 absolute left-[55%] top-[-30%] flex h-5 w-5 items-center justify-center rounded-full bg-red-700 text-xs font-bold text-white sm:h-6 sm:w-6 sm:text-sm">
-            {cartProducts.length}
-          </div>
+          {cartProducts.length > 0 && (
+            <div className="flex-shrink-1 absolute left-[55%] top-[-30%] flex h-5 w-5 items-center justify-center rounded-full bg-red-700 text-xs font-bold text-white sm:h-6 sm:w-6 sm:text-sm">
+              {cartProducts.length}
+            </div>
+          )}
         </div>
         <div
           className="relative flex cursor-pointer  items-center gap-2"

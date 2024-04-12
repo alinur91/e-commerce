@@ -26,22 +26,22 @@ const CartProduct = ({ cartProduct }: CartProductProps) => {
   return (
     <div
       key={cartProduct.productId}
-      className="flex items-center gap-3 rounded-md p-2 outline outline-1 outline-gray-200"
+      className="flex items-center justify-between gap-3 rounded-md p-2 outline outline-1 outline-gray-200"
     >
-      <div className="basis-40 space-y-1">
+      <div className="basis-44 space-y-1">
         <h3 className="text-xs font-bold">{cartProduct.title}</h3>
         <p className=" text-xs font-medium text-gray-400">
           ${formatNumberWithCommas(cartProduct.price)}
         </p>
       </div>
-      <div className="mr-auto basis-14 rounded-sm border-2 border-orange-300 bg-orange-100">
+      <div className="basis-14 rounded-sm border-2 border-orange-300 bg-orange-100">
         <AddRemoveQuantityButtons
           product={cartProduct}
           type={ButtonEnum.WARNING}
           className="gap-2"
         />
       </div>
-      <div className="flex items-center gap-2 font-bold">
+      <div className="flex justify-end basis-20 items-center gap-2 font-bold">
         ${formatNumberWithCommas(cartProduct.price * cartProduct.quantity!)}{" "}
         <FaMinusCircle
           onClick={handleRemoveProductFromCart}

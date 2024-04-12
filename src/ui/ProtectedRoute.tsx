@@ -13,7 +13,10 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   // 1. If there is NO authenticated user, redirect to the /signin
   useEffect(() => {
-    if (!loggedInUser && !loading) navigate("/signin");
+    if (!loggedInUser) {
+      navigate("/signin");
+      return;
+    }
   }, [loggedInUser, loading, navigate]);
 
   // 2. If there IS a user, render the app

@@ -3,3 +3,4 @@ export { useAppSelector } from "./useAppSelector";
 export { useActions } from "./useActions";
 export { default as useLocalStorage } from "./useLocalStorage";
 export { default as useClickOutside } from "./useClickOutside ";
+export { default as useUserDataSubscriptionEffect } from "./useUserDataSubscriptionEffect";

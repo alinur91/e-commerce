@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="border-b-2 border-b-gray-300 shadow-lg ">
+      <div className="border-b-2 border-b-gray-300 shadow-lg">
         <ImageBanner />
         <Filters />
       </div>

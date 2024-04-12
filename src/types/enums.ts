@@ -3,6 +3,7 @@ export enum ButtonEnum {
   LIGHT = "LIGHT",
   WARNING = "WARNING",
   DANGER = "DANGER",
+  SECONDARY = "SECONDARY",
 }
 
 export enum AuthenticationPagesEnum {
@@ -16,7 +17,7 @@ export enum StarRatingSizeEnum {
   "small" = "SMALL",
 }
 
-export enum NoSearchResultsMessagesEnum {
+export enum NoDataResultsMessageEnum {
   NoMatch = "We're sorry. We were not able to find a match 😒",
   HelloMessage = "Hello, what are you feeling to shop today... 😉",
 }
@@ -39,4 +40,5 @@ export enum ToastNotificationsEnum {
   SUCCESS_REMOVE_AVATAR = "Avatar successfully removed",
   SUCCESS_ADD_TO_CART = "Product added to cart",
   SUCCESS_REMOVE_FROM_CART = "Product removed from cart",
+  SUCCESS_REMOVE_ALL_FROM_CART = "All products removed from cart",
 }

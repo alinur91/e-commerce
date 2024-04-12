@@ -49,7 +49,11 @@ const authSlice = createSlice({
       updatePasswordError: null as string | null,
     },
   },
-  reducers: {},
+  reducers: {
+    setAuthLoading(state, action) {
+      state.loading = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // Handle signup action
     builder.addCase(signup.pending, (state) => {

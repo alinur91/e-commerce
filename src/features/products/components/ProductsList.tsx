@@ -1,8 +1,8 @@
 import { noData, productsNotFound } from "@data/index";
 import { ProductsData } from "@features/products/lib/types";
 import { Product } from "@features/products/components/index";
-import { PagesEnum, NoSearchResultsMessagesEnum } from "@ts-types/enums";
-import { NoSearchResultsMessage } from "@ui/index";
+import { PagesEnum,  NoDataResultsMessageEnum } from "@ts-types/enums";
+import { NoDataResultsMessage } from "@ui/index";
 
 type ProductsListProps = {
   productsList: ProductsData;
@@ -20,9 +20,9 @@ const ProductsList = ({
       ));
     } else {
       return page === PagesEnum.search ? (
-        <NoSearchResultsMessage
+        <NoDataResultsMessage
           imageUrl={noData}
-          message={NoSearchResultsMessagesEnum.NoMatch}
+          message={NoDataResultsMessageEnum.NoMatch}
         />
       ) : (
         <img src={productsNotFound} alt="" />
@@ -31,7 +31,7 @@ const ProductsList = ({
   };
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-8">
+    <div className="flex flex-wrap items-center justify-center gap-8 pb-12">
       {getContent(page, productsList)}
     </div>
   );

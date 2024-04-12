@@ -27,16 +27,14 @@ const CartProductsSidebar = ({
   }, [open]);
 
   return (
-    <>
-      <div className="pointer-events-auto fixed bottom-0 z-10 h-full w-full  backdrop-blur-sm sm:h-[90.5%]">
-        <div
-          ref={sidebarContentRef as RefObject<HTMLDivElement>}
-          className="h-full w-full bg-white px-4 py-28 shadow-2xl transition-all duration-300 sm:w-[450px] sm:px-8 sm:py-14"
-        >
-          {children}
-        </div>
+    <div className="pointer-events-auto	fixed bottom-0 z-10 h-full w-full overflow-y-auto backdrop-blur-sm sm:h-[90.5%]">
+      <div
+        ref={sidebarContentRef as RefObject<HTMLDivElement>}
+        className="min-h-dvh w-full bg-white px-4 py-28 shadow-2xl transition-all duration-300 sm:w-[450px] sm:px-8 sm:py-14"
+      >
+        {children}
       </div>
-    </>
+    </div>
   );
 };
 

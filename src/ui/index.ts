@@ -9,7 +9,7 @@ export { default as DropDownOptions } from "./DropDownOptions";
 export { default as Input } from "./Input";
 export { default as ErrorMessage } from "./ErrorMessage";
 export { default as GitHubRepoLastUpdated } from "./GitHubRepoLastUpdated";
-export { default as NoSearchResultsMessage } from "./NoSearchResultsMessage";
+export { default as NoDataResultsMessage } from "./NoDataResultsMessage";
 export { default as ImageBanner } from "./ImageBanner";
 export { default as ImageWithOverlay } from "./ImageWithOverlay ";
 export { default as AuthenticationNavigation } from "./AuthenticationNavigation";

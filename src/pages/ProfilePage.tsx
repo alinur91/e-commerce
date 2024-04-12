@@ -5,7 +5,7 @@ import {
 
 const ProfilePage = () => {
   return (
-    <div className="flex flex-col items-center justify-center overflow-hidden pt-14">
+    <div className="flex  flex-col items-center justify-center pt-16">
       <UploadRemoveAvatar />
       <UpdatePasswordForm />
     </div>

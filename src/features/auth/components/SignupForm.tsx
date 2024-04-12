@@ -78,7 +78,7 @@ const LoginForm = () => {
         />
         <Button
           disabled={loading || isSubmitting}
-          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
+          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800 disabled:bg-gray-200 disabled:text-gray-400"
           type={ButtonEnum.PRIMARY}
         >
           {loading ? "Signing Up..." : "Sign up"}{" "}

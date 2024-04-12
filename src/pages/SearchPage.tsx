@@ -2,8 +2,8 @@ import { search } from "@data/index";
 import { getProducts } from "@features/products/api";
 import { ProductsList } from "@features/products/components";
 import { ProductsData } from "@features/products/lib/types";
-import { NoSearchResultsMessagesEnum, PagesEnum } from "@ts-types/enums";
-import { Button, Input, NoSearchResultsMessage } from "@ui/index";
+import { NoDataResultsMessageEnum, PagesEnum } from "@ts-types/enums";
+import { Button, Input, NoDataResultsMessage } from "@ui/index";
 import { FaHome } from "@utils/icons";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -29,7 +29,7 @@ const SearchPage = () => {
   }, [productsList]);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-12 pt-10">
+    <div className="flex flex-col items-center justify-center gap-12 px-12 pt-12">
       <Input
         id="searchTerm"
         inputClassName="h-[40px] w-[350px] focus:outline-yellow-700 md:h-[50px] md:w-[500px]"
@@ -46,9 +46,9 @@ const SearchPage = () => {
           productsList={filteredProducts as ProductsData}
         />
       ) : (
-        <NoSearchResultsMessage
+        <NoDataResultsMessage
           imageUrl={search}
-          message={NoSearchResultsMessagesEnum.HelloMessage}
+          message={NoDataResultsMessageEnum.HelloMessage}
         />
       )}
     </div>

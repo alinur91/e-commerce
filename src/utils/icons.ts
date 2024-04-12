@@ -10,7 +10,9 @@ import { ClipLoader, MoonLoader } from "react-spinners";
 import { IoMdClose } from "react-icons/io";
 import { FaPlusCircle } from "react-icons/fa";
 import { FaMinusCircle } from "react-icons/fa";
-
+import { BiSolidCoupon } from "react-icons/bi";
+import { FaLongArrowAltRight } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export {
   CiSearch,
@@ -26,4 +28,7 @@ export {
   IoMdClose,
   FaPlusCircle,
   FaMinusCircle,
+  BiSolidCoupon,
+  FaLongArrowAltRight,
+  MdDelete,
 };

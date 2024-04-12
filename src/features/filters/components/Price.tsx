@@ -1,5 +1,5 @@
 import { useAppSelector } from "@hooks/useAppSelector";
-import { getMaxPrice } from "@utils/helpers";
+import { mostExpensivePrice } from "@utils/helpers";
 import { useActions } from "@hooks/useActions";
 import { selectFiltersData } from "@features/filters/slices/selector";
 import { getProducts } from "@features/products/api";
@@ -10,7 +10,10 @@ const Price = () => {
   const { setPrice } = useActions();
   const [totalProducts, setTotalProducts] = useState<ProductsData>([]);
   const { price } = useAppSelector(selectFiltersData);
-  const maxPrice = useMemo(() => getMaxPrice(totalProducts), [totalProducts]);
+  const maxPrice = useMemo(
+    () => mostExpensivePrice(totalProducts),
+    [totalProducts],
+  );
 
   // Calculate the adjusted max value to ensure it's divisible by the step size
   const adjustedMaxPrice = Math.ceil(maxPrice / 20) * 20;
