@@ -19,7 +19,7 @@ const CartProductsSidebarContainer = ({
   
   return (
     <CartProductsSidebar sidebarContentRef={sidebarContentRef} open={open}>
-      <h1 className="mb-8 flex h-9 items-center justify-between text-xl font-bold opacity-80 md:text-2xl">
+      <h1 className="mb-8 flex h-10 items-center justify-between text-xl font-bold opacity-80 md:text-2xl">
         My Orders {loading && <MoonLoader size={24} color="#915c0d" />}
       </h1>
       {cartProducts.length > 0 && <CartProductsContent />}
