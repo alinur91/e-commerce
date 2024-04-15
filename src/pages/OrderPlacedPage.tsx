@@ -33,7 +33,7 @@ const OrderPlacedPage = () => {
       {loading && <MoonLoader color="#915c0d" />}
       {!loading && error && <ErrorMessage message={error} />}
       {!loading && !error && (
-        <div className="space-y-6 md:w-[700px] lg:w-[800px]">
+        <div className="space-y-6 px-2 md:w-[700px] lg:w-[800px]">
           <OrderRecievedHeader />
           <OrderDetails />
           <CustomerDetails />

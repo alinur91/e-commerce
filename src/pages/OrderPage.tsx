@@ -16,7 +16,7 @@ const OrderPage = () => {
 
   return (
     <BackgroundWithBlur imageUrl={ecommerce3}>
-      <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white px-4 py-5 sm:w-[570px] sm:px-10 sm:py-11">
+      <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white px-2 py-5 sm:w-[570px] sm:px-10 sm:py-11">
         <div>
           <h3 className="text-lg font-bold uppercase sm:text-2xl">
             place your order
