@@ -32,8 +32,10 @@ const LoginForm = () => {
     dispatch(signup({ email, password, name }));
   };
 
+  const isLoading = isSubmitting || loading;
+
   return (
-    <div className=" flex flex-1 flex-col gap-2 bg-white px-14 py-16">
+    <div className="flex flex-1 flex-col gap-2 bg-white px-14 py-8">
       <img className="h-24 w-24" src={logo} alt="" />
       <h1 className="text-2xl font-bold uppercase">FEAST MODE 😉</h1>
       <p className="text-gray-400">
@@ -78,11 +80,15 @@ const LoginForm = () => {
         />
         <Button
           disabled={loading || isSubmitting}
-          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800 disabled:bg-gray-200 disabled:text-gray-400"
+          className={`mt-6 h-11 gap-3 w-full ${
+            isLoading
+              ? "disabled:bg-gray-200 disabled:text-gray-400"
+              : "hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
+          }`}
           type={ButtonEnum.PRIMARY}
         >
-          {loading ? "Signing Up..." : "Sign up"}{" "}
-          {loading && <MoonLoader color="#be7c18" size={24} />}
+          {isLoading ? "Signing Up..." : "Sign up"}{" "}
+          {isLoading && <MoonLoader color="#be7c18" size={24} />}
         </Button>
       </form>
       <AuthenticationNavigation page={AuthenticationPagesEnum.Signup} />

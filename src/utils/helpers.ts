@@ -1,5 +1,11 @@
 import { DiscountTypeEnum, type DiscountsInfo } from "@features/cart/lib/types";
 import { ProductsData } from "@features/products/lib/types";
+import {
+  ToastNotificationsMessageEnum,
+  ToastPositionNotificationsEnum,
+  ToastTypeNotificationsEnum,
+} from "@ts-types/enums";
+import { toast } from "react-toastify";
 
 export const getLocalStorageItem = <T>(key: string): T | null => {
   try {
@@ -55,15 +61,15 @@ export const hasCouponApplied = (discountInfo: DiscountsInfo) =>
 
 export const calculateDiscountValue = (
   totalAmountValue: number,
-  discountInfo: DiscountsInfo,
+  { discountType, value }: DiscountsInfo,
 ) => {
   let discountValue;
 
-  if (discountInfo.discountType === DiscountTypeEnum.FLAT) {
-    discountValue = discountInfo.value;
+  if (discountType === DiscountTypeEnum.FLAT) {
+    discountValue = value;
   }
-  if (discountInfo.discountType === DiscountTypeEnum.PERCENT) {
-    discountValue = Math.floor(totalAmountValue * discountInfo.value);
+  if (discountType === DiscountTypeEnum.PERCENT) {
+    discountValue = Math.floor(totalAmountValue * value);
   }
 
   return discountValue;
@@ -71,3 +77,17 @@ export const calculateDiscountValue = (
 
 export const formatNumberWithCommas = (number: number) =>
   number.toLocaleString("en-US");
+
+export const showToastNotificationMessage = (
+  type: ToastTypeNotificationsEnum,
+  message: ToastNotificationsMessageEnum | string,
+  position:
+    | ToastPositionNotificationsEnum
+    | undefined = ToastPositionNotificationsEnum.TOP_CENTER,
+  autoClose: number | undefined = 2500,
+) => {
+  toast[type](message, {
+    position,
+    autoClose,
+  });
+};

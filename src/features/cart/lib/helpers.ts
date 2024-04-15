@@ -1,7 +1,15 @@
-import { ToastNotificationsEnum } from "@ts-types/enums";
-import { toast } from "react-toastify";
-import { CartState, DiscountsInfo } from "@features/cart/lib/types";
+import {
+  ToastNotificationsMessageEnum,
+  ToastPositionNotificationsEnum,
+  ToastTypeNotificationsEnum,
+} from "@ts-types/enums";
+import {
+  CartState,
+  DiscountsInfo,
+  ShowNotificationOnAllProductsRemovalEnum,
+} from "@features/cart/lib/types";
 import { ProductData } from "@features/products/lib/types";
+import { showToastNotificationMessage } from "@utils/helpers";
 
 export const handleAddToCartFulfilledState = (
   state: CartState,
@@ -10,10 +18,11 @@ export const handleAddToCartFulfilledState = (
   state.loading = false;
   // if product has been added for the first time to cart,quanitity will be undeinfed,if so then show notification. if product already exists in cart,we're increasing quantity and dont show the notifcation.
   if (!product.quantity) {
-    toast.success(ToastNotificationsEnum.SUCCESS_ADD_TO_CART, {
-      position: "top-center",
-      autoClose: 1000,
-    });
+    showToastNotificationMessage(
+      ToastTypeNotificationsEnum.SUCCESS,
+      ToastNotificationsMessageEnum.SUCCESS_ADD_TO_CART,
+      ToastPositionNotificationsEnum.TOP_CENTER,
+    );
   }
 };
 
@@ -24,24 +33,29 @@ export const handleRemoveFromCartFulfilledState = (
   state.loading = false;
   state.coupon.loading = false;
   if (currentQuantity <= 0) {
-    toast.success(ToastNotificationsEnum.SUCCESS_REMOVE_FROM_CART, {
-      position: "top-center",
-      autoClose: 1000,
-    });
+    showToastNotificationMessage(
+      ToastTypeNotificationsEnum.SUCCESS,
+      ToastNotificationsMessageEnum.SUCCESS_REMOVE_FROM_CART,
+      ToastPositionNotificationsEnum.TOP_CENTER,
+    );
   }
 };
 
 export const handleRemoveAllFromCartFulfilledState = (
   state: CartState,
-  isSuccessRemoval: boolean,
+  shouldShowNotificationOnRemoval: ShowNotificationOnAllProductsRemovalEnum,
 ) => {
   state.loading = false;
   state.coupon.loading = false;
-  if (isSuccessRemoval) {
-    toast.success(ToastNotificationsEnum.SUCCESS_REMOVE_ALL_FROM_CART, {
-      position: "top-center",
-      autoClose: 1000,
-    });
+  if (
+    shouldShowNotificationOnRemoval ===
+    ShowNotificationOnAllProductsRemovalEnum.YES
+  ) {
+    showToastNotificationMessage(
+      ToastTypeNotificationsEnum.SUCCESS,
+      ToastNotificationsMessageEnum.SUCCESS_REMOVE_ALL_FROM_CART,
+      ToastPositionNotificationsEnum.TOP_CENTER,
+    );
   }
 };
 
@@ -69,6 +83,10 @@ export const handleCouponRejectedState = (
   if (state.coupon) {
     state.coupon.loading = false;
     state.coupon.error = message;
-    toast.error(message, { position: "bottom-right", autoClose: 1000 });
+    showToastNotificationMessage(
+      ToastTypeNotificationsEnum.ERROR,
+      message,
+      ToastPositionNotificationsEnum.BOTTOM_RIGHT,
+    );
   }
 };

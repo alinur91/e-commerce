@@ -9,9 +9,10 @@ import { selectCartData } from "@features/cart/slices/selector";
 
 type HeaderProps = {
   handleToggleSidebar: () => void;
+  headerRef: React.RefObject<HTMLDivElement>;
 };
 
-const Header = ({ handleToggleSidebar }: HeaderProps) => {
+const Header = ({ handleToggleSidebar, headerRef }: HeaderProps) => {
   const { loggedInUser } = useAppSelector(selectAuthData);
   const { cartProducts } = useAppSelector(selectCartData);
   const [showDropDown, setShowDropDown] = useState(false);
@@ -27,7 +28,10 @@ const Header = ({ handleToggleSidebar }: HeaderProps) => {
 
   const path = location.pathname === "/search" ? "/" : "/search";
   return (
-    <header className="sticky left-0 right-0 top-0  z-20 flex h-[80px] items-center justify-between border-b-2 border-gray-300 bg-white px-6 shadow-sm  sm:h-[100px] sm:px-24">
+    <header
+      ref={headerRef}
+      className="sticky  left-0 right-0 top-0 z-20 flex h-[80px] items-center justify-between border-b-2 border-gray-300 bg-white px-6 shadow-sm  sm:h-[100px] sm:px-24"
+    >
       {" "}
       <Button to="/">
         <img className="h-12 w-12 sm:h-20 sm:w-20" src={logo} alt="" />

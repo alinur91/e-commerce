@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getFilteredProducts, getProductById } from "@features/products/api/index";
+import {
+  getFilteredProducts,
+  getProductById,
+} from "@features/products/api/index";
 import {
   ProductData,
   ProductsData,
@@ -14,12 +17,16 @@ import { handleProductsFulfilledState } from "@features/products/lib/helpers";
 const productsSlice = createSlice({
   name: "products",
   initialState: {
-    productsList: null as ProductsData | null,
+    productsList: [] as ProductsData,
     singleProduct: null as ProductData | null,
     loading: false,
     error: null as string | null,
   },
-  reducers: {},
+  reducers: {
+    setProductsList(state, action) {
+      state.productsList = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getFilteredProducts.pending, (state) => {
       handlePendingState(state as ProductsState);

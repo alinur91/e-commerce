@@ -17,7 +17,9 @@ const AuthenticationNavigation = ({ page }: AuthenticationNavigationProps) => {
             </Link>{" "}
           </p>{" "}
           <Link className="cursor-default hover:underline" to="/reset-password">
-            <p className="text-gray-400">Forgot Your Password?</p>
+            <p className="text-gray-400 hover:text-gray-500">
+              Forgot Your Password?
+            </p>
           </Link>
         </>
       )}

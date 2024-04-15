@@ -2,7 +2,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reducer as authReducer } from "@features/auth/slices/auth.slice";
 import { reducer as productsReducer } from "@features/products/slices/products.slice";
 import { reducer as filtersReducer } from "@features/filters/slices/filters.slice";
-import { reducer as cartReducer } from "@features/cart/slices/cartSlice";
+import { reducer as orderReducer } from "@features/order/slices/order.slice";
+import { reducer as cartReducer } from "@features/cart/slices/cart.slice";
 import loggerMiddleware from "redux-logger";
 
 const reducers = combineReducers({
@@ -10,7 +11,7 @@ const reducers = combineReducers({
   products: productsReducer,
   filters: filtersReducer,
   cart: cartReducer,
-  orderDetails: ()=>{}
+  orderDetails: orderReducer,
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

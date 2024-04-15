@@ -27,7 +27,7 @@ const CartProductsContent = () => {
   };
 
   const handleCheckout = () => {
-    navigate('/order')
+    navigate("/order");
   };
 
   return (
@@ -38,7 +38,7 @@ const CartProductsContent = () => {
       <div className="space-y-5">
         <Button
           onClick={handleCheckout}
-          className="flex h-12 items-center gap-3 border-2 border-green-900 hover:bg-green-600"
+          className="flex h-12 w-full items-center gap-3 border-2 border-green-900 hover:bg-green-600"
           type={ButtonEnum.PRIMARY}
         >
           Checkout <FaLongArrowAltRight />

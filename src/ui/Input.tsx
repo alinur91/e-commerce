@@ -42,10 +42,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     }, []);
 
     return (
-      <div className="relative flex flex-col">
+      <div className="relative flex flex-col space-y-1">
         {label && (
           <label
-            className={`text-lg font-semibold ${labelClassName}`}
+            className={`cursor-pointer text-lg font-semibold ${labelClassName}`}
             htmlFor={id}
           >
             {label}

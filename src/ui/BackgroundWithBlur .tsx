@@ -21,7 +21,7 @@ const BackgroundWithBlur = ({
       <div className="sm:absolute sm:inset-0 sm:bg-gray-900 sm:bg-opacity-50 sm:blur"></div>
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative">
         {/* Render children */}
         {children}
       </div>

@@ -51,7 +51,7 @@ const UpdatePasswordForm = () => {
           {...register("confirmPassword")}
         />
         <Button
-          className="h-12 gap-3 disabled:bg-gray-200 disabled:text-gray-400"
+          className="h-12 w-full gap-3 disabled:bg-gray-200 disabled:text-gray-400"
           disabled={isSubmitting || updatePasswordLoading}
           type={ButtonEnum.PRIMARY}
         >

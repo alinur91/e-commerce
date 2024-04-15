@@ -12,6 +12,7 @@ const useUserDataSubscriptionEffect = () => {
     setCouponData,
     setCartLoading,
     setAuthLoading,
+    setProductsList,
   } = useActions();
 
   useEffect(() => {
@@ -63,6 +64,7 @@ const useUserDataSubscriptionEffect = () => {
       } else {
         resetFiltersState();
         setCartProducts([]);
+        setProductsList([]);
         setCouponData({});
       }
     });
@@ -74,6 +76,7 @@ const useUserDataSubscriptionEffect = () => {
     setCouponData,
     setCartLoading,
     setAuthLoading,
+    setProductsList,
   ]);
 
   return null; // Custom hooks should return a value, but in this case, we don't need to return anything

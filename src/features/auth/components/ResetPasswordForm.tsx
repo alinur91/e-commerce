@@ -20,7 +20,7 @@ const ResetPasswordForm = () => {
           autoFocus
         />
         <Button
-          className="mt-6 h-11 gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
+          className="mt-6 h-11 w-full gap-3 hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
           type={ButtonEnum.PRIMARY}
         >
           verify now

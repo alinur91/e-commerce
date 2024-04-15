@@ -4,10 +4,16 @@ import { auth, db } from "@services/firebase/firebaseConfig";
 import { removeCoupon } from "@features/cart/api/removeCoupon.api";
 import { hasCouponApplied } from "@utils/helpers";
 import { RootState } from "@services/store/store";
+import { ShowNotificationOnAllProductsRemovalEnum } from "@features/cart/lib/types";
 
 export const removeAllProductsAndCoupon = createAsyncThunk(
   "cart/removeAllProducts",
-  async (_, { dispatch, getState }) => {
+  async (
+    shouldShowNotificationOnRemoval:
+      | ShowNotificationOnAllProductsRemovalEnum
+      | undefined = ShowNotificationOnAllProductsRemovalEnum.YES,
+    { dispatch, getState },
+  ) => {
     const state = getState() as RootState;
     const couponApplied = hasCouponApplied(state.cart.coupon.discountInfo);
     try {
@@ -24,7 +30,7 @@ export const removeAllProductsAndCoupon = createAsyncThunk(
         });
         if (couponApplied) await dispatch(removeCoupon());
 
-        return true; // Indicate successful removal
+        return shouldShowNotificationOnRemoval;
       } else {
         throw new Error("User not authenticated");
       }

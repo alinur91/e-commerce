@@ -32,7 +32,7 @@ export enum LocalStorageKeyEnum {
   FILTERS = "filters",
 }
 
-export enum ToastNotificationsEnum {
+export enum ToastNotificationsMessageEnum {
   SUCCESS_SIGN_IN = "Successfully signed in",
   SUCCESS_SIGN_OUT = "Successfully signed out",
   SUCCESS_UPDATE_PASSWORD = "Password successfully updated",
@@ -41,4 +41,17 @@ export enum ToastNotificationsEnum {
   SUCCESS_ADD_TO_CART = "Product added to cart",
   SUCCESS_REMOVE_FROM_CART = "Product removed from cart",
   SUCCESS_REMOVE_ALL_FROM_CART = "All products removed from cart",
+  SUCCESS_ORDER = "Your order succesfully placed",
+}
+
+export enum ToastTypeNotificationsEnum {
+  SUCCESS = "success",
+  INFO = "info",
+  ERROR = "error",
+}
+
+export enum ToastPositionNotificationsEnum {
+  BOTTOM_RIGHT = "bottom-right",
+  TOP_CENTER = "top-center",
+  BOTTOM_CENTER = "bottom-center",
 }

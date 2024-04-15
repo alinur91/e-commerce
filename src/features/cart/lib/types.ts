@@ -33,3 +33,8 @@ export type MinThresholdInfoError = {
   isError: boolean;
   value: number;
 };
+
+export enum ShowNotificationOnAllProductsRemovalEnum {
+  YES = "yes",
+  NO = "no",
+}

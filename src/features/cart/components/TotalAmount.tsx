@@ -1,37 +1,20 @@
-import { useAppSelector, useAppDispatch } from "@hooks/index";
+import { useAppSelector, useCouponDiscount } from "@hooks/index";
 import { selectCartData } from "@features/cart/slices/selector";
-import {
-  formatNumberWithCommas,
-  totalAmount,
-  calculateDiscountValue,
-  hasCouponApplied,
-} from "@utils/helpers";
-import { removeCoupon } from "@features/cart/api/index";
+import { formatNumberWithCommas, totalAmount } from "@utils/helpers";
 
 const TotalAmount = () => {
   const {
     cartProducts,
     coupon: { discountInfo },
   } = useAppSelector(selectCartData);
-  const dispatch = useAppDispatch();
 
   const totalAmountValue = totalAmount(cartProducts);
-  let newEvalTotalAmountValue;
-  const couponApplied = hasCouponApplied(discountInfo);
-  let discountValue;
-
-  if (couponApplied) {
-    discountValue = calculateDiscountValue(totalAmountValue, discountInfo);
-    newEvalTotalAmountValue = eval(`${totalAmountValue}-${discountValue}`);
-  }
-
-  if (couponApplied && totalAmountValue < discountInfo.minOrderForDiscount) {
-    dispatch(removeCoupon());
-  }
+  const { isCouponApplied, discountValue, newEvalTotalAmountValue } =
+    useCouponDiscount(discountInfo, totalAmountValue);
 
   return (
     <div className="space-y-2 rounded-sm bg-gray-100 p-4">
-      {couponApplied && (
+      {isCouponApplied && (
         <div className="text-md flex items-center justify-between">
           <h3 className="text-gray-400">Coupon discounts:</h3>
           <div className="font-semibold">
@@ -44,9 +27,7 @@ const TotalAmount = () => {
         <h3 className="text-sm font-semibold text-gray-500">Total Amount:</h3>
         <span className="text-xl font-bold">
           💲
-          {formatNumberWithCommas(
-            couponApplied ? newEvalTotalAmountValue : totalAmountValue,
-          )}
+          {formatNumberWithCommas(newEvalTotalAmountValue)}
         </span>
       </div>
     </div>
