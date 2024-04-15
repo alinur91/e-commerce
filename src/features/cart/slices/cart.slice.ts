@@ -6,7 +6,7 @@ import {
   removeCoupon,
   removeAllProductsAndCoupon,
 } from "@features/cart/api/index";
-import { ProductsData } from "@features/products/lib/types";
+import { ProductData, ProductsData } from "@features/products/lib/types";
 import {
   handlePendingState,
   handleRejectedState,
@@ -44,7 +44,7 @@ const cartSlice = createSlice({
       handlePendingState(state);
     });
     builder.addCase(addProductToCart.fulfilled, (state, action) => {
-      handleAddToCartFulfilledState(state, action.payload);
+      handleAddToCartFulfilledState(state, action.payload as ProductData);
     });
     builder.addCase(addProductToCart.rejected, (state, action) => {
       handleRejectedState(state, action.payload as string);

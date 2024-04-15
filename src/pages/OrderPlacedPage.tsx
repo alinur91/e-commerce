@@ -9,6 +9,7 @@ import { useActions, useAppDispatch, useAppSelector } from "@hooks/index";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MoonLoader } from "@utils/icons";
+import ErrorMessage from "@ui/ErrorMessage";
 
 const OrderPlacedPage = () => {
   const { id } = useParams();
@@ -30,8 +31,9 @@ const OrderPlacedPage = () => {
   return (
     <div className="mt-20 flex h-dvh flex-col items-center gap-4 tracking-wide">
       {loading && <MoonLoader color="#915c0d" />}
+      {!loading && error && <ErrorMessage message={error} />}
       {!loading && !error && (
-        <div className="w-[400px] space-y-6 md:w-[700px] lg:w-[800px]">
+        <div className="w-[380px] space-y-6 md:w-[700px] lg:w-[800px]">
           <OrderRecievedHeader />
           <OrderDetails />
           <CustomerDetails />

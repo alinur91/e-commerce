@@ -27,8 +27,6 @@ export const fetchOrderById = createAsyncThunk(
         } else {
           throw new Error("Order not found");
         }
-      } else {
-        throw new Error("User not authenticated");
       }
     } catch (error) {
       throw new Error(error as string);

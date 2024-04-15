@@ -40,8 +40,6 @@ export const addProductToCart = createAsyncThunk(
           });
           return product;
         }
-      } else {
-        throw new Error("User not authenticated");
       }
     } catch (error) {
       throw new Error(error as string);

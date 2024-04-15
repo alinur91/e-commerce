@@ -27,7 +27,9 @@ const TotalAmount = () => {
         <h3 className="text-sm font-semibold text-gray-500">Total Amount:</h3>
         <span className="text-xl font-bold">
           💲
-          {formatNumberWithCommas(newEvalTotalAmountValue)}
+          {formatNumberWithCommas(
+            isCouponApplied ? newEvalTotalAmountValue : totalAmountValue,
+          )}
         </span>
       </div>
     </div>

@@ -41,7 +41,7 @@ const CartProduct = ({ cartProduct }: CartProductProps) => {
           className="gap-2"
         />
       </div>
-      <div className="flex justify-end basis-20 items-center gap-2 font-bold">
+      <div className="flex basis-20 items-center justify-end gap-2 font-bold">
         ${formatNumberWithCommas(cartProduct.price * cartProduct.quantity!)}{" "}
         <FaMinusCircle
           onClick={handleRemoveProductFromCart}

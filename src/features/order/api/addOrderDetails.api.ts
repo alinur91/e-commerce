@@ -40,8 +40,6 @@ export const addOrderDetails = createAsyncThunk(
           discountInfo,
           orderSuccess: true,
         } as OrderDetails;
-      } else {
-        throw new Error("User not authenticated");
       }
     } catch (error) {
       throw new Error(error as string);

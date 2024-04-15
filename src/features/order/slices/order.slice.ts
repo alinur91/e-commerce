@@ -31,16 +31,19 @@ const orderSlice = createSlice({
       handlePendingState(state);
     });
     builder.addCase(addOrderDetails.fulfilled, (state, action) => {
-      handleOrderFulfilledState(state, action.payload);
+      if (action.payload) handleOrderFulfilledState(state, action.payload);
     });
     builder.addCase(addOrderDetails.rejected, (state, action) => {
-      handleOrderRejectedState(state, action.payload as string);
+      handleOrderRejectedState(state, action.error.message as string);
     });
     builder.addCase(fetchOrderById.pending, (state) => {
       handlePendingState(state);
     });
     builder.addCase(fetchOrderById.fulfilled, (state, action) => {
-      handleOrderFulfilledState(state, action.payload);
+      if (action.payload) handleOrderFulfilledState(state, action.payload);
+    });
+    builder.addCase(fetchOrderById.rejected, (state, action) => {
+      handleOrderRejectedState(state, action.error.message as string);
     });
   },
 });
