@@ -56,6 +56,7 @@ const OrderForm = () => {
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <Input
           inputClassName="h-12 text-gray-400 font-semibold"
+          labelClassName="text-sm sm:text-lg"
           id="name"
           label="Full Name"
           type="text"
@@ -66,6 +67,7 @@ const OrderForm = () => {
         />
         <Input
           inputClassName="h-12 text-gray-400 font-semibold"
+          labelClassName="text-sm sm:text-lg"
           id="phoneNumber"
           label="Phone Number"
           type="number"
@@ -75,6 +77,7 @@ const OrderForm = () => {
         />
         <Input
           inputClassName="h-12 text-gray-400 font-semibold"
+          labelClassName="text-sm sm:text-lg"
           id="address"
           label="Address"
           type="text"
