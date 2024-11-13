@@ -44,7 +44,7 @@ export const getFilteredProducts = createAsyncThunk(
       if (rating) {
         q = query(
           q,
-          where("rating", ">=", rating.toString()),
+          where("rating", ">=", rating),
         ) as CollectionReference<DocumentData>;
       }
 

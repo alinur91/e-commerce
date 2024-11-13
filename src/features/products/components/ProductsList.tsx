@@ -29,7 +29,7 @@ const ProductsList = ({
       );
     }
   };
-
+  
   return (
     <div className="flex flex-wrap items-center justify-center gap-8 pb-12">
       {getContent(page, productsList)}

@@ -1,9 +1,7 @@
 export enum CategoryEnum {
-  "smartphones" = "Smartphones",
-  "laptops" = "Laptops",
-  "skincare" = "Skincare",
-  "home-decoration" = "Home-decoration",
+  "beauty" = "Beauty",
   "fragrances" = "Fragrances",
+  "furniture" = "Furniture",
   "groceries" = "Groceries",
   "all" = "All",
 }

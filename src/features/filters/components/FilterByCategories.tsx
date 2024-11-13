@@ -20,17 +20,11 @@ const FilterByCategories = () => {
         onChange={(e) => onChange(e.target.value as CategoryEnum)}
       >
         <option value={CategoryEnum.all}>{CategoryEnum.all}</option>
-        <option value={CategoryEnum["home-decoration"]}>
-          {CategoryEnum["home-decoration"]}
-        </option>
-        <option value={CategoryEnum.laptops}>{CategoryEnum.laptops}</option>
-        <option value={CategoryEnum.skincare}>{CategoryEnum.skincare}</option>
-        <option value={CategoryEnum.smartphones}>
-          {CategoryEnum.smartphones}
-        </option>
+        <option value={CategoryEnum.beauty}>{CategoryEnum.beauty}</option>
         <option value={CategoryEnum.fragrances}>
           {CategoryEnum.fragrances}
         </option>
+        <option value={CategoryEnum.furniture}>{CategoryEnum.furniture}</option>
         <option value={CategoryEnum.groceries}>{CategoryEnum.groceries}</option>
       </select>
     </div>

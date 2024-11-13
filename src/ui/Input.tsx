@@ -52,7 +52,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         {errors && (
-          <span className="sm:text-lg text-xs text-red-500">{errors}</span>
+          <span className="text-xs text-red-500 sm:text-lg">{errors}</span>
         )}
         <input
           id={id}
