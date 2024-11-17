@@ -50,10 +50,11 @@ export const mostExpensivePrice = (products: ProductsData) => {
 };
 
 export const totalAmount = (cartProducts: ProductsData) => {
-  return cartProducts.reduce(
+  const rawTotal = cartProducts.reduce(
     (totalAmount, product) => totalAmount + product.price * product.quantity!,
     0,
   );
+  return parseFloat(rawTotal.toFixed(2)); // Ensures only 2 decimal places
 };
 
 export const hasCouponApplied = (discountInfo: DiscountsInfo) =>

@@ -1,3 +1,4 @@
+import { AuthRoutesEnum } from "@features/auth/lib/types";
 import { selectAuthData } from "@features/auth/slices/selector";
 import { useAppSelector } from "@hooks/index";
 import { ReactNode, useEffect } from "react";
@@ -14,7 +15,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   // 1. If there is NO authenticated user, redirect to the /signin
   useEffect(() => {
     if (!loggedInUser) {
-      navigate("/signin");
+      navigate(AuthRoutesEnum.Signin);
       return;
     }
   }, [loggedInUser, loading, navigate]);

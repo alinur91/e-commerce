@@ -5,11 +5,9 @@ import { signin } from "@features/auth/api/signin.api";
 import { useForm } from "react-hook-form";
 import { TSignInSchema, signInSchema } from "@features/auth/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@hooks/index";
 import { selectAuthData } from "@features/auth/slices/selector";
 import { MoonLoader } from "@utils/icons";
-import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
   const {
@@ -20,12 +18,7 @@ const SigninForm = () => {
     resolver: zodResolver(signInSchema),
   });
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const { loading, loggedInUser } = useAppSelector(selectAuthData);
-
-  useEffect(() => {
-    if (loggedInUser) navigate("/");
-  }, [loggedInUser, navigate]);
+  const { loading } = useAppSelector(selectAuthData);
 
   const onSubmit = async (data: TSignInSchema) => {
     const { email, password } = data;
@@ -63,7 +56,7 @@ const SigninForm = () => {
         />
         <Button
           disabled={isLoading}
-          className={`mt-6 h-11 gap-3 w-full ${
+          className={`mt-6 h-11 w-full gap-3 ${
             isLoading
               ? "disabled:bg-gray-200 disabled:text-gray-400"
               : "hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"
@@ -74,7 +67,7 @@ const SigninForm = () => {
           {isLoading && <MoonLoader color="#915c0d" size={24} />}
         </Button>
       </form>
-      <AuthenticationNavigation page={AuthenticationPagesEnum.Login} />
+      <AuthenticationNavigation page={AuthenticationPagesEnum.Signin} />
     </div>
   );
 };

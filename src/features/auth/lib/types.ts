@@ -69,3 +69,9 @@ export type UpdatePasswordActionsState = {
   updatePasswordLoading: boolean;
   updatePasswordError: string | null;
 };
+
+export enum AuthRoutesEnum {
+  Signin = "/signin",
+  Signup = "/signup",
+  ResetPassword = "/reset-password",
+}

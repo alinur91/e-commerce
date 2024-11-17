@@ -7,9 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TSignUpSchema, signUpSchema } from "@features/auth/lib/types";
 import { useAppDispatch, useAppSelector } from "@hooks/index";
 import { MoonLoader } from "@utils/icons";
-import { useEffect } from "react";
 import { selectAuthData } from "@features/auth/slices/selector";
-import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const {
@@ -20,12 +18,7 @@ const LoginForm = () => {
     resolver: zodResolver(signUpSchema),
   });
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const { loading, loggedInUser } = useAppSelector(selectAuthData);
-
-  useEffect(() => {
-    if (loggedInUser) navigate("/");
-  }, [loggedInUser, navigate]);
+  const { loading } = useAppSelector(selectAuthData);
 
   const onSubmit = async (data: TSignUpSchema) => {
     const { email, password, name } = data;
@@ -80,7 +73,7 @@ const LoginForm = () => {
         />
         <Button
           disabled={loading || isSubmitting}
-          className={`mt-6 h-11 gap-3 w-full ${
+          className={`mt-6 h-11 w-full gap-3 ${
             isLoading
               ? "disabled:bg-gray-200 disabled:text-gray-400"
               : "hover:bg-gradient-to-t hover:from-green-500 hover:to-green-800"

@@ -7,9 +7,9 @@ export enum ButtonEnum {
 }
 
 export enum AuthenticationPagesEnum {
-  Login = "LOGIN",
-  Signup = "SIGNUP",
-  Reset_Password = "RESET_PASSWORD",
+  Signin = "signin",
+  Signup = "signup",
+  Reset_Password = "reset_password",
 }
 
 export enum StarRatingSizeEnum {
